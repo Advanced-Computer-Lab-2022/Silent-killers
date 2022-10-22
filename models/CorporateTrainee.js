@@ -16,6 +16,14 @@ Corporate: {
 Country: {
     type: String,
     required: false
-}})
+},
+Course:{
+    title:String,
+    subject:String,
+    instructor:String,
+    required: true
+
+}
+})
 
 module.exports = mongoose.model('CorporateTrainee', CorporateTraineeSchema)
