@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const InstructorSchema = new mongoose.schema({
+const InstructorSchema = new mongoose.Schema({
 Username: {
     type: String,
     required: true
@@ -8,6 +8,10 @@ Username: {
 Password: {
     type: String,
     required: true
+},
+Country: {
+    type: String,
+    required: false
 }
 })
 
