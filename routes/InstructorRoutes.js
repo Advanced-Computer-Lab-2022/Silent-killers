@@ -6,4 +6,4 @@ const Instructor = require('../models/Instructor')
 //Add routes here
 
 
-module.exports = router
+module.exports = router 

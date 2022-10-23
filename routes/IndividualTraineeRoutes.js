@@ -6,4 +6,4 @@ const IndividualTrainee = require('../models/IndividualTrainee')
 //Add routes here
 
 
-module.exports = router
+module.exports = router 

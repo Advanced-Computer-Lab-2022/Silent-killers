@@ -52,7 +52,7 @@ async function getCorporateTrainee(req, res, next) {
     } 
       any
     res.CorporateTrainee = CorporateTrainee
-    next()
+    next() 
 }
   
 

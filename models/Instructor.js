@@ -10,7 +10,7 @@ Password: {
     required: true
 },
 Country: {
-    type: String,
+    type: String, 
     required: false
 }
 })

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const GuestSchema = new mongoose.Schema({
     Country: {
         type: String,
-        required: false
+         required: false
     }
 })
 

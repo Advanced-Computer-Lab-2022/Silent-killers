@@ -8,7 +8,7 @@ Username: {
 Password: {
     type: String,
     required: true
-},
+}, 
 Corporate: {
     type: String,
     required: true
