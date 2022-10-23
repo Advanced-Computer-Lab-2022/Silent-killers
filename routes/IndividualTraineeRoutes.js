@@ -31,4 +31,4 @@ async function GetIndividualTrainee(req, res, next) {
 }
 
 
-module.exports = router
+module.exports = router 

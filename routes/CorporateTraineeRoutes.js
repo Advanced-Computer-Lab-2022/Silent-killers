@@ -65,6 +65,7 @@ async function getCorporateTrainee(req, res, next) {
       const x = await user.find({instructor})
       res.status(200).json(x);
     });
+    next() 
 }
   
 

@@ -6,4 +6,4 @@ const Admin = require('../models/Admin')
 //Add routes here
 
 
-module.exports = router
+module.exports = router 

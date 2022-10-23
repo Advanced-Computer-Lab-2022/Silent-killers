@@ -9,7 +9,7 @@ const GuestSchema = new mongoose.Schema({
         subject:String,
         instructor:String,
         required: true
-    
+
     }
 })
 
