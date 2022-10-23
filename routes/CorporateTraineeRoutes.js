@@ -65,18 +65,7 @@ async function getCorporateTrainee(req, res, next) {
       const x = await user.find({instructor})
       res.status(200).json(x);
     });
-<<<<<<< Updated upstream
     next() 
-=======
-    <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">England</a>
-    <a href="#">France</a>
-    <a href="#">Egypt</a>
-  </div>
-</div>
->>>>>>> Stashed changes
 }
   
 

@@ -13,7 +13,6 @@ router.patch('/:id', GetGuest, async (req, res) => {
      res.status(480).json({ message: err.message })
       }
   }   )
-<<<<<<< Updated upstream
 async function GetGuest(req, res, next) {
     let Guest
     try {
@@ -78,8 +77,6 @@ async function GetGuest(req, res, next) {
       //app.use('/api/GuestRoutes',guestroutes)
 }
 
-=======
->>>>>>> Stashed changes
 async function GetGuest(req, res, next) {
     let Guest
     try {
@@ -145,6 +142,4 @@ async function GetGuest(req, res, next) {
 }
 
 
-module.exports = router
-
-module.exports = router}
+module.exports = router}}
