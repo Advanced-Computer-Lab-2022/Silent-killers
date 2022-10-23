@@ -8,6 +8,11 @@ const GuestSchema = new mongoose.Schema({
         title:String,
         subject:String,
         instructor:String,
+        subtitles:String,
+        totalHoursOfEachSubtitle:Number,
+        exercises:String,
+        totalHoursOfCourse:Number,
+        price:Number,
         required: true
 
     }
