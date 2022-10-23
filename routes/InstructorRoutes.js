@@ -27,28 +27,11 @@ async function getInstructor(req, res, next) {
       any
     res.Instructor = Instructor
     next()
-    app.get("/id",async (req, res) => {
-        const x = await user.find({title})
-        res.status(200).json(x);
-      });
-      app.get("/id",async (req, res) => {
-        const x = await user.find({subject})
-        res.status(200).json(x);
-      });
-      app.get("/id",async (req, res) => {
-        const x = await user.find({instructor})
-        res.status(200).json(x);
-      });
-      <div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-        <a href="#">England</a>
-        <a href="#">France</a>
-        <a href="#">Egypt</a>
-        </div>
-        </div>
+
       //app.use('/api/InstructorRoutes',instroutes)
 }
+;
+
 
 
 module.exports = router 

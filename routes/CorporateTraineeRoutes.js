@@ -53,18 +53,7 @@ async function getCorporateTrainee(req, res, next) {
       any
     res.CorporateTrainee = CorporateTrainee
     next()
-    app.get("/id",async (req, res) => {
-      const x = await user.find({title})
-      res.status(200).json(x);
-    });
-    app.get("/id",async (req, res) => {
-      const x = await user.find({subject})
-      res.status(200).json(x);
-    });
-    app.get("/id",async (req, res) => {
-      const x = await user.find({instructor})
-      res.status(200).json(x);
-    });
+   
     next() 
 }
   
