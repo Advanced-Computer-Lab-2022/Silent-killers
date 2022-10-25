@@ -49,6 +49,44 @@ const { route } = require('./AdminRoutes');
         next() 
     
   }
+  //searchforcoursebyinstructor
+  getMycourses: async (req, res) => {
+    try {
+      const courses = await Courses.find({ INSid: req.INSid.id });
+      res.json(courses);
+    } catch (err) {
+      console.log("-----------mycourse error-------------");
+
+      console.log(err);
+      return res.status(500).json({ msg: err.message });}
+    }
+  router.get("/id",getcoursedetails,async (req, res) => {
+    const x = await Course.find({Subtitles})
+    res.status(200).json(x);},
+    router.get("/id",getcoursedetails,async (req, res) => {
+        const x = await Course.find({Exercises})
+        res.status(200).json(x);},
+    router.get("/id",getcoursedetails,async (req, res) => {
+            const x = await Course.find({TotalHoursOfEachSubtitle})
+            res.status(200).json(x);},
+    router.get("/id",getcoursedetails,async (req, res) => {
+                const x = await Course.find({TotalHoursOfCourse})
+                res.status(200).json(x);},
+
+  //details of course
+  getcoursedetails, async (req, res) => {
+    try {
+      const courses = await Courses.findById(req.params.id).populate(
+        "user",
+        "id name description headline avatar"
+      );
+      res.json(courses);
+    } catch (error) {
+      console.log("------------course details error----------");
+      console.log(error);
+      return res.status(500).json({ msg: error.message });
+    }
+  },
     async function postSearchbySubject(req, res, next) {
         let SearchbySubject
         try {
@@ -61,11 +99,11 @@ const { route } = require('./AdminRoutes');
     } 
     
       any
-    res.SearchbySubject = SearchbySubject}
+    res.SearchbySubject = SearchbySubject},
     //createcourse
-    router.post('addCourse',InstructorRoutes.addCourse);
+    router.post('addCourse',InstructorRoutes.addCourse),
  async function addCourse(req,res,next)
- try{
+ {try{
     const course = new Course(
       {
         title: "Title",
@@ -81,4 +119,4 @@ const { route } = require('./AdminRoutes');
    return res.status(500).json({ msg: err.message});
  }
     
-}})
+}))))}})

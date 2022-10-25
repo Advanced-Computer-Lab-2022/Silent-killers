@@ -5,7 +5,8 @@ Title: {
     type: String,
     required: true
 },
-TotalHours: {
+INSid: { type: Schema.Types.ObjectId, ref: 'Instructor', required: true },
+TotalHoursOfCourse: {
     type: int,
     required: true
 },
@@ -24,7 +25,12 @@ Exercises:{
 Price:{
     type:String,
     required:true
-}
+},
+TotalHoursOfEachSubtitle: {
+    type: int,
+    required: true
+},
+
 })
 
 module.exports = mongoose.model('Course', CourseSchema)
