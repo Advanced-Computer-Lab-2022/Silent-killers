@@ -5,7 +5,7 @@ Title: {
     type: String,
     required: true
 },
-iid: { type: Schema.Types.ObjectId, ref: 'Instructor', required: true },
+INSid: { type: Schema.Types.ObjectId, ref: 'Instructor', required: true },
 TotalHoursOfCourse: {
     type: int,
     required: true
