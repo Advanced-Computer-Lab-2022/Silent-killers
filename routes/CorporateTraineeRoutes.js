@@ -6,6 +6,17 @@ const CorporateTrainee = require('../models/CorporateTrainee')
 
 //Add routes here
 
+router.get('/viewcoures', async (req,res) => {
+  try{
+    const courses = await courses.find()
+    res.send(courses)
+  }catch(err){
+    res.status(500).json({message: err,message})
+  }
+
+})
+
+
 router.post('/addCorporateTrainee', (req, res) => {
      var new_user = new CorporateTrainee({
        "Username": "Test 1",
@@ -45,7 +56,7 @@ async function getCorporateTrainee(req, res, next) {
     try {
       CorporateTrainee = await CorporateTrainee.findById(req.params.id)
       if (CorporateTrainee == null) {
-        return res.status(404).json({ message: 'Cannot find subscriber' })
+        return res.status(404).json({ message: 'Cannot find Trainee' })
        }
     } catch (err) {
       return res.status(500).json({ message: err.message })
@@ -60,3 +71,4 @@ async function getCorporateTrainee(req, res, next) {
 
 
 module.exports = router
+module.exports = {getCorporateTrainee}
