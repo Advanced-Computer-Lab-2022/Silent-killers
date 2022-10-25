@@ -4,7 +4,7 @@ const app = express()
 const mongoose = require('mongoose')
 
 
-mongoose.connect(process.env.DB_URL,{useNewUrlParser: true})
+mongoose.connect('mongodb+srv://OmarAshraf:2912004@cluster0.padqnt9.mongodb.net/test',{useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error',(error) => console.log(error))
 db.once('open',() => console.log('Connected To Database Successfully'))
@@ -26,5 +26,7 @@ app.use('/IndividualTrainee',IndividualTraineeRouter)
 
 const InstructorRouter = require('./routes/InstructorRoutes')
 app.use('/Instructor',InstructorRouter)
+
+
 
 app.listen(8000, () => console.log('Server is up and running! YAY!'))
