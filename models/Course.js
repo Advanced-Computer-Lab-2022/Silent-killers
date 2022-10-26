@@ -5,9 +5,9 @@ Title: {
     type: String,
     required: true
 },
-INSid: { type: CourseSchema.Types.ObjectId, ref: 'Instructor', required: true },
+INSid: { type: mongoose.Types.ObjectId, ref: 'Instructor', required: true },
 TotalHoursOfCourse: {
-    type: int,
+    type: Number,
     required: true
 },
 Rating:{
@@ -27,7 +27,7 @@ Price:{
     required:true
 },
 TotalHoursOfEachSubtitle: {
-    type: int,
+    type: Number,
     required: true
 },
 
