@@ -1,4 +1,5 @@
 const express = require('express')
+const Course = require('../models/Course')
 const router = express.Router()
 const Instructor = require('../models/Instructor')
 router.patch('/:id', getInstructor, async (req, res) => {
@@ -31,7 +32,15 @@ async function getInstructor(req, res, next) {
       //app.use('/api/InstructorRoutes',instroutes)
 }
 ;
+router.get('/viewMycoures', async (req,res) => {
+  try{
+    const courses = await Course.find()
+    res.send(courses)
+  }catch(err){
+    res.status(500).json({message: err,message})
+  }
 
+})
 
 
 module.exports = router 

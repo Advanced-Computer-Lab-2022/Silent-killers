@@ -27,6 +27,7 @@ app.use('/IndividualTrainee',IndividualTraineeRouter)
 const InstructorRouter = require('./routes/InstructorRoutes')
 app.use('/Instructor',InstructorRouter)
 
-
+const CourseRouter = require('./routes/CourseRoutes')
+app.use('/Course',CourseRouter)
 
 app.listen(8000, () => console.log('Server is up and running! YAY!'))
