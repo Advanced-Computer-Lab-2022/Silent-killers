@@ -10,6 +10,10 @@ const CourseSchema = new mongoose.Schema({
     INSid: { type: mongoose.Types.ObjectId,
          ref: 'Instructor',
           required: true },
+    InstructorName: {
+        type:String,
+        required : false
+    },
     TotalHoursOfCourse: {
         type: Number,
         required: false
@@ -21,6 +25,14 @@ const CourseSchema = new mongoose.Schema({
     Subtitles:{
         type:String,
         required:true
+    },
+    Subject:{
+        type: String,
+        required : false
+    },
+    Summary:{
+        type:String,
+        required:false
     },
     Exercises:{
         type:Number,

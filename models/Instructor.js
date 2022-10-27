@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
-const {ObjectId} = mongoose.schema;
+const {ObjectId} = mongoose.Schema;
 
 const InstructorSchema = new mongoose.Schema({
     Username: {

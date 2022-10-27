@@ -13,7 +13,7 @@ const CorporateTraineeSchema = new mongoose.Schema({
     }, 
     Corporate: {
         type: String,
-        required: true
+        required: false
     },
     Country: {
         type: String,

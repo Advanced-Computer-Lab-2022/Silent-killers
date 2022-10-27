@@ -1,10 +1,12 @@
 const express = require('express')
 const {
- getCourses, addCourse, getCoursesPrice,filterRate
+ getCourses, getCoursesPrice,filterRate,editCourse,filterPrice,filterSubject
 } = require('../controllers/CourseController')
 const router = express.Router()
 router.get('/getcourses', getCourses)
-router.post('/addcourses',addCourse)
 router.get('/getcourseprice',getCoursesPrice)
-router.get('/filterRating',filterRate)
+router.get('/filterRate',filterRate)
+router.patch('/editcourse/:id',editCourse)
+router.get('/filterprice',filterPrice)
+router.get('/filtersubject',filterSubject)
 module.exports = router

@@ -1,4 +1,4 @@
-const Admin = require('../models/IndividualTrainee')
+const IndividualTrainee = require('../models/IndividualTrainee')
 const mongoose = require('mongoose')
 
 //functions here

@@ -9,4 +9,4 @@ const mongoose = require('mongoose')
 
 
 //export the functions here
-//module.exports = {fn. name}
+//module.exports = {}

@@ -2,7 +2,7 @@ const Course = require('../models/Course')
 const mongoose = require('mongoose')
 
 const getCourses = async (req, res) => {
-    const courses = await Course.find({}).sort({createdAt: -1})
+    const courses = await Course.find({Title,TotalHoursOfCourse,Rating}).sort({createdAt: -1})
   
     for (let index = 0; index < courses.length; index++) {
         const element = courses[index];
@@ -19,31 +19,84 @@ const getCoursesPrice = async (req, res) => {
     }
     res.status(200).json(courses.Price)
 }
-const addCourse = async(req,res) => {
-   
-    const{Title,Subtitles,Price,Summary,INSid} = req.body;
-    try{
-        const course = await Course.create({Title,Subtitles,Price,Summary,INSid});
-        res.status(200).json(course)
-    }catch(error){
-        res.status(400).json({error:error.message})
-    }
-}
+
 const filterRate = async(req,res) => {
-    /*
-    1- get the author id from the request query
-    2- find all the blogs that have the same author id
-    3- send the blogs as a response
-    */
-    const Rating = req.body;
-    // check if userId is not empty
+
+    const {Rating} = req.body;
     try{
-        //Course.find
-    const result = await  Course.find({TotalHoursOfCourses:Rating});
-    res.status(200).json(result)
+    const x = await Course.find({ Rating:Rating})
+        console.log(Rating)
+   
+    res.status(200).json(x)
+ 
     }catch(error){
         res.status(400).json({error:error.message})
     }
 }
 
-module.exports = {getCourses,addCourse,getCoursesPrice,filterRate}
+const filterSubject= async(req,res) => {
+
+    const {subject} = req.body;
+    try{
+    const x = await Course.find({ Subject:subject})
+
+   
+    res.status(200).json(x)
+ 
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
+
+const filterPrice = async(req,res) => {
+
+    const {Price} = req.body;
+    try{
+    const x = await Course.find({ Price:Price})
+
+   
+    res.status(200).json(x)
+ 
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
+const editCourse = async(req, res) => {
+    try{
+        const{
+            Title,
+            InstructorName,
+            TotalHoursOfCourse,
+            Rating,
+            Subtitles,
+            Subject,
+            Summary,
+            Exercises,
+            Price,
+            TotalHoursOfEachSubtitle
+        } =req.body;
+        console.log("Req Body");
+        const course = await Course.findById(req.params.id);
+        if(course)
+        {
+        course.Title = Title;
+        course.InstructorName = InstructorName;
+        course.TotalHoursOfCourse = TotalHoursOfCourse;
+        course.Rating = Rating;
+        course.Subtitles = Subtitles;
+        course.Subject = Subject;
+        course.Summary = Summary;
+        course.Exercises = Exercises;
+        course.Price = Price;
+        course.TotalHoursOfEachSubtitle = TotalHoursOfEachSubtitle;
+        }
+        const editCourse = await course.save();
+        res.json(editCourse);
+    } catch(err) {
+        console.log("Error");
+        return res.status(500).json({msg: err.message});
+    }   
+}
+
+
+module.exports = {getCourses,getCoursesPrice,filterRate,editCourse,filterRate,filterPrice,filterSubject}
