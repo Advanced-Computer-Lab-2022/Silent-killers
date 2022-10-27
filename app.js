@@ -1,33 +1,43 @@
 require('dotenv').config()
+
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose')
 
+const CourseRouter = require('./routes/CourseRoutes')
+const AdminRouter = require('./routes/AdminRoutes')
+const CorporateTraineeRouter = require('./routes/CorporateTraineeRoutes')
+const GuestRouter = require('./routes/GuestRoutes')
+const IndividualTraineeRouter = require('./routes/IndividualTraineeRoutes')
+const InstructorRouter = require('./routes/InstructorRoutes')
 
-mongoose.connect('mongodb+srv://OmarAshraf:2912004@cluster0.padqnt9.mongodb.net/test',{useNewUrlParser: true})
-const db = mongoose.connection
-db.on('error',(error) => console.log(error))
-db.once('open',() => console.log('Connected To Database Successfully'))
+// express app
+const app = express()
 
-
+// middleware
 app.use(express.json())
 
-const AdminRouter = require('./routes/AdminRoutes')
-app.use('/Admin',AdminRouter)
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
 
-const CorporateTraineeRouter = require('./routes/CorporateTraineeRoutes')
-app.use('/CorporateTrainee',CorporateTraineeRouter)
+// routes
+app.use('/api/Course',CourseRouter)
+app.use('/api/Admin',AdminRouter)
+app.use('/api/CorporateTrainee',CorporateTraineeRouter)
+app.use('/api/Guest',GuestRouter)
+app.use('/api/IndividualTrainee',IndividualTraineeRouter)
+app.use('/api/Instructor',InstructorRouter)
 
-const GuestRouter = require('./routes/GuestRoutes')
-app.use('/Guest',GuestRouter)
-
-const IndividualTraineeRouter = require('./routes/IndividualTraineeRoutes')
-app.use('/IndividualTrainee',IndividualTraineeRouter)
-
-const InstructorRouter = require('./routes/InstructorRoutes')
-app.use('/Instructor',InstructorRouter)
-
-const CourseRouter = require('./routes/CourseRoutes')
-app.use('/Course',CourseRouter)
-
-app.listen(8000, () => console.log('Server is up and running! YAY!'))
+// connect to db
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('connected to database')
+    // listen to port
+    app.listen(process.env.PORT, () => {
+      console.log('listening for requests on port', process.env.PORT)
+    })
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 

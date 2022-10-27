@@ -1,74 +1,13 @@
 const express = require('express')
-const { appendFile } = require('fs')
+//const{
+  //add functions needed here
+//} = require('../controllers/CorporateTraineeController')
+
 const router = express.Router()
-const CorporateTrainee = require('../models/CorporateTrainee')
+
+//add routes here
 
 
-//Add routes here
-
-router.get('/viewcoures', async (req,res) => {
-  try{
-    const courses = await courses.find()
-    res.send(courses)
-  }catch(err){
-    res.status(500).json({message: err,message})
-  }
-
-})
-
-
-router.post('/addCorporateTrainee', (req, res) => {
-     var new_user = new CorporateTrainee({
-       "Username": "Test 1",
-
-       
-     })
-     new_user.save(function(err,result){
-       if (err){
-           console.log(err);
-       }
-       else{
-           console.log(result)
-       }
-   })
-     //user.save();
- });
-
-
-
-
-
-router.patch('/:id', getCorporateTrainee, async (req, res) => {
-   if (req.body.name != null) {
-    res.CorporateTrainee.name = req.body.name
-   }
-   try {
-     const updatedCorporateTrainee = await res.CorporateTrainee.save()
-     res.json(updatedCorporateTrainee)
-      }                       
-     catch (err) {
-    res.status(480).json({ message: err.message })
-     }
- }   )
-
-async function getCorporateTrainee(req, res, next) {
-    let corporatetrainee
-    try {
-      CorporateTrainee = await CorporateTrainee.findById(req.params.id)
-      if (CorporateTrainee == null) {
-        return res.status(404).json({ message: 'Cannot find Trainee' })
-       }
-    } catch (err) {
-      return res.status(500).json({ message: err.message })
-    } 
-      any
-    res.CorporateTrainee = CorporateTrainee
-    next()
-   
-    next() 
-}
-  
 
 
 module.exports = router
-module.exports = {getCorporateTrainee}

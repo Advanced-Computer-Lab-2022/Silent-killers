@@ -1,9 +1,14 @@
 const express = require('express')
+//import functions
+// const {
+//     
+//   } = require('../controllers/AdminController')
+
 const router = express.Router()
-const Admin = require('../models/Admin')
+
+//routes
 
 
-//Add routes here
 
 
-module.exports = router 
+module.exports = router
