@@ -30,12 +30,12 @@ app.use('/api/IndividualTrainee',IndividualTraineeRouter)
 app.use('/api/Instructor',InstructorRouter)
 
 // connect to db
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://OmarAshraf:2912004@cluster0.padqnt9.mongodb.net/test")
   .then(() => {
     console.log('connected to database')
     // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log('listening for requests on port', process.env.PORT)
+    app.listen(8000, () => {
+      console.log('listening for requests on port', 8000)
     })
   })
   .catch((err) => {
