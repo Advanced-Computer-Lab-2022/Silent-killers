@@ -1,6 +1,6 @@
 const express = require('express')
 const{
-getInstructors,instructerViewCourseByTitle,addCourse,instructorFilterHisCourseBySubject
+getInstructors,instructerViewCourseByTitle,addCourse,instructorFilterHisCourseBySubject,searchforcoursebysubjecttitleinstructor
 } = require('../controllers/InstructorController')
 
 const router = express.Router()
@@ -10,7 +10,7 @@ router.get('/getinstructor',getInstructors)
 router.get('/viewbytitle',instructerViewCourseByTitle)
 router.post('/addcourses',addCourse)
 router.get('/filtersubject',instructorFilterHisCourseBySubject)
-
+router.get('/searchbythings',searchforcoursebysubjecttitleinstructor)
 
 
 

@@ -9,7 +9,11 @@ const CourseSchema = new mongoose.Schema({
     },
     INSid: { type: mongoose.Types.ObjectId,
          ref: 'Instructor',
-          required: true },
+          required: false },
+    InstructorID: {
+        type : Number,
+        required : true
+    },
     InstructorName: {
         type:String,
         required : false
