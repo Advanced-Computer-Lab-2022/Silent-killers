@@ -1,12 +1,14 @@
 const express = require('express')
-//const{
-  //add functions needed here
-//} = require('../controllers/CorporateTraineeController')
+const{
+} = require('../controllers/CorporateTraineeController')
+const{
+searchforcoursebysubjecttitleinstructor
+}=require('../controllers/InstructorController')
 
 const router = express.Router()
 
 //add routes here
-
+router.get('/searchby',searchforcoursebysubjecttitleinstructor)
 
 
 
