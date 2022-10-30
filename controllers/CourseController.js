@@ -37,16 +37,35 @@ const filterRate = async(req,res) => {
 const filterSubject= async(req,res) => {
 
     const {subject} = req.body;
-    try{
+    const {Rating} = req.body;
+    if(subject){
     const x = await Course.find({ Subject:subject})
-
+    }
    
     res.status(200).json(x)
  
-    }catch(error){
-        res.status(400).json({error:error.message})
     }
-}
+    const filtersubjectorrating = async (req, res) => {
+        const {subject} = req.body
+        const {rating} = req.body
+    
+        try{
+            if(subject){
+                const course = await Course.find({Subject:subject})
+                return res.status(200).json(course)
+            }else{
+                if(rating){
+                    const course = await Course.find({Rating:rating})
+                    return res.status(200).json(course)
+                }
+                
+            }
+            throw new Error("No such Course")
+        }
+        catch(error){
+            return res.status(500).json({error: error.message})
+        }
+    }
 
 const filterPrice = async(req,res) => {
 
@@ -103,4 +122,4 @@ const editcourse = async(req, res) => {
     res.status(200).json(course)}
 
 
-module.exports = {getCourses,getCoursesPrice,filterRate,editcourse,filterRate,filterPrice,filterSubject}
+module.exports = {getCourses,getCoursesPrice,editcourse,filterRate,filterPrice,filterSubject,filtersubjectorrating}

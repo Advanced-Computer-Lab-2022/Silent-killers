@@ -12,7 +12,7 @@ const CourseSchema = new mongoose.Schema({
           required: false },
     InstructorID: {
         type : Number,
-        required : true
+        required : false
     },
     InstructorName: {
         type:String,

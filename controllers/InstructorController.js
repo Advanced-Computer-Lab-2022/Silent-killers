@@ -17,7 +17,7 @@ const getInstructors = async (req, res) => {
 const instructerViewCourseByTitle = async (req,res) =>{
     const {instructor} = req.body
     try{
-        const course = await Course.find({InstructorName:instructor})
+        const course = await Course.find({InstructorID:instructor})
       res.status (200).json(course)
   }
   catch (error) {
@@ -26,9 +26,9 @@ const instructerViewCourseByTitle = async (req,res) =>{
 
     const addCourse = async(req,res) => {
    
-        const{Title,Subtitles,Price,Summary,INSid,InstructorName} = req.body;
+        const{Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle} = req.body;
         try{
-            const course = await Course.create({Title,Subtitles,Price,Summary,INSid,InstructorName});
+            const course = await Course.create({Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle});
             res.status(200).json(course)
         }catch(error){
             res.status(400).json({error:error.message})
@@ -38,12 +38,13 @@ const instructerViewCourseByTitle = async (req,res) =>{
 const instructorFilterHisCourseBySubject = async(req,res) => {
     //const userId = req.params.id;
     const {subject} = req.body
+    const {instructor} = req.body
     // if(userId){
     //     const result = await Course.find({INSid:mongoose.Types.ObjectId(userId)}).populate('S');
     //     res.status(200).json(result)
     //     }
     try{
-    const course = await Course.findById(req.params.id)
+    const course = await Course.find({Subject:subject,InstructorID:instructor})
 
    //if(const course2 = await Course.find(Subject:subject))
     res.status(200).json(course)
@@ -89,7 +90,7 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
             }
             else{
                 if(instructor){
-                    const course = await Course.find({INSid:instructor})
+                    const course = await Course.find({InstructorID:instructor})
                     return res.status(200).json(course)
                 }
             }
