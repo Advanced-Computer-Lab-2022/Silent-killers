@@ -4,11 +4,16 @@ import CreateNewCorporate from './pages/CreateNewCorporate';
 import CreateNewCourse from './pages/CreateNewCourse';
 import CreateNewInstructor from './pages/CreateNewInstructor';
 import Filtersubjectorrating from './pages/filteronsubjectorrating';
+import Viewcourseofinstructor from './pages/Viewcourseofinstructor';
+import Searchforcourse from './pages/Searchforcourse';
 
 // pages & components
 import Home from './pages/Home'
 import ViewPriceOfCourse from './pages/ViewPriceOfCourse';
 import Viewtitlesandmore from './pages/Viewtitlesandmore';
+import Selectcountry from './pages/Selectcountry';
+// import { filterPrice } from '../../controllers/CourseController';
+import Filteronprice from './pages/filteronprice';
 function App() {
 
   return (
@@ -20,9 +25,17 @@ function App() {
               path="/" 
               element={<Home />} 
             />
+            <Route 
+              path="/viewtitlesandmore" 
+              element={<Viewtitlesandmore />} 
+            />
             <Route
             path = "/filteronsubjectorrating"
             element = {<Filtersubjectorrating/>}
+            />
+            <Route
+            path = "/filteronprice"
+            element = {<Filteronprice/>}
             />
             <Route
             path = "/addcourse"
@@ -43,6 +56,18 @@ function App() {
             <Route
             path = "/viewprice"
             element = {<ViewPriceOfCourse/>}
+            />
+            <Route 
+              path="/Viewcourseofinstructor" 
+              element={<Viewcourseofinstructor />} 
+            />
+               <Route 
+              path="/selectcountry" 
+              element={<Selectcountry />} 
+            />
+            <Route 
+              path="/Searchforcourse" 
+              element={<Searchforcourse />} 
             />
           </Routes>
         </div>

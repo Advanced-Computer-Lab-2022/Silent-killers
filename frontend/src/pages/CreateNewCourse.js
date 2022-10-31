@@ -1,20 +1,20 @@
 import { useState } from 'react'
 
 const CreateNewCourse = () => {
-  const [title, setTitle] = useState('')
-  const [instructorID, setInstructorID] = useState(null)
-  const [totalHoursOfCourse, setTotalHoursOfCourse] = useState(null)
-  const [subtitle, setSubtitle] = useState('')
-  const [subject, setSubject] = useState('')
-  const [price, setPrice] = useState('')
-  const [summary, setSummary] = useState('')
-  const [exercises, setExercises] = useState(null)
-  const [totalHoursOfEachSubtitle, settotalHoursOfEachSubtitle] = useState(null)
+  const [Title, setTitle] = useState('')
+  const [InstructorID, setInstructorID] = useState(null)
+  const [TotalHoursOfCourse, setTotalHoursOfCourse] = useState(null)
+  const [Subtitles, setSubtitles] = useState('')
+  const [Subject, setSubject] = useState('')
+  const [Price, setPrice] = useState('')
+  const [Summary, setSummary] = useState('')
+  const [Exercises, setExercises] = useState(null)
+  const [TotalHoursOfEachSubtitle, setTotalHoursOfEachSubtitle] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const course = {title,instructorID,totalHoursOfCourse,subtitle,subject,summary,exercises,price,totalHoursOfEachSubtitle}
+    const course = {Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle}
     //??
     const response = await fetch('/api/Instructor/addcourses', {
       method: 'POST',
@@ -31,14 +31,14 @@ const CreateNewCourse = () => {
     if (response.ok) {
     //   setError(null)
       setTitle('')
-      setSubtitle('')
+      setSubtitles('')
       setPrice('')
       setSummary('')
       setInstructorID(null)
       setTotalHoursOfCourse(null)
       setSubject('')
       setExercises(null)
-      settotalHoursOfEachSubtitle(null)
+      setTotalHoursOfEachSubtitle(null)
       console.log('new Course added:', json)
     }
 
@@ -52,21 +52,21 @@ const CreateNewCourse = () => {
       <input 
         type="text" 
         onChange={(e) => setTitle(e.target.value)} 
-        value={title}
+        value={Title}
       />
 
      <label>Instructor ID:</label>
       <input 
         type="number" 
         onChange={(e) => setInstructorID(e.target.value)} 
-        value={instructorID}
+        value={InstructorID}
       />
 
      <label> Total Hours Of the Course:</label>
       <input 
         type="number" 
         onChange={(e) => setTotalHoursOfCourse(e.target.value)} 
-        value={totalHoursOfCourse}
+        value={TotalHoursOfCourse}
       />
 
 
@@ -74,44 +74,44 @@ const CreateNewCourse = () => {
       <label>Subtitles:</label>
       <input 
         type="text" 
-        onChange={(e) => setSubtitle(e.target.value)} 
-        value={subtitle}
+        onChange={(e) => setSubtitles(e.target.value)} 
+        value={Subtitles}
       />
 
     <label>Subject:</label>
       <input 
         type="text" 
         onChange={(e) => setSubject(e.target.value)} 
-        value={subject}
+        value={Subject}
       />
 
       <label>Price:</label>
       <input 
         type="text" 
         onChange={(e) => setPrice(e.target.value)} 
-        value={price} 
+        value={Price} 
       />
       <label> Total number of Exercises:</label>
       
       <input 
         type="number" 
         onChange={(e) => setExercises(e.target.value)} 
-        value={exercises}
+        value={Exercises}
       />
 
     <label> Total number of hours for each Subtitle:</label>
       
       <input 
         type="number" 
-        onChange={(e) => settotalHoursOfEachSubtitle(e.target.value)} 
-        value={totalHoursOfEachSubtitle}
+        onChange={(e) => setTotalHoursOfEachSubtitle(e.target.value)} 
+        value={TotalHoursOfEachSubtitle}
       />
 
       <label>Summary about the course:</label>
       <input 
         type="text" 
         onChange={(e) => setSummary(e.target.value)} 
-        value={summary}
+        value={Summary}
       />
 
       <button>Add Course</button>
