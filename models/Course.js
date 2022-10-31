@@ -40,7 +40,7 @@ const CourseSchema = new mongoose.Schema({
     },
     Exercises:{
         type:Number,
-        required:false
+        required:true
     },
     Price:{
         type:String,

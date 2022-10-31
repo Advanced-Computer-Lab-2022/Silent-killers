@@ -26,33 +26,42 @@ const instructerViewCourseByTitle = async (req,res) =>{
 
     const addCourse = async(req,res) => {
    
-        const{Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle} = req.body;
+        const{Title,INSid,InstructorName,TotalHoursOfCourse,Rating,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle} = req.body;
         try{
-            const course = await Course.create({Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle});
+            const course = await Course.create({Title,INSid,InstructorName,TotalHoursOfCourse,Rating,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle});
             res.status(200).json(course)
         }catch(error){
             res.status(400).json({error:error.message})
         }
     }
 // filter his/her courses by Subject 
-const instructorFilterHisCourseBySubject = async(req,res) => {
-    //const userId = req.params.id;
-    const {subject} = req.body
-    const {instructor} = req.body
-    // if(userId){
-    //     const result = await Course.find({INSid:mongoose.Types.ObjectId(userId)}).populate('S');
-    //     res.status(200).json(result)
-    //     }
-    try{
-    const course = await Course.find({Subject:subject,InstructorID:instructor})
+// const instructorFilterHisCourseBySubject = async(req,res) => {
+//     //const userId = req.params.id;
+//     console.log(req.params)
+//     console.log(req)
+//     const {subject} = req.body
+//     const instructor = req.params.id
+//     // if(userId){
+//     //     const result = await Course.find({INSid:mongoose.Types.ObjectId(userId)}).populate('S');
+//     //     res.status(200).json(result)
+//     //     }
+//     try{
+//     const course = await Course.find({Subject:subject,INSid:mongoose.Types.ObjectId(instructor)})
 
-   //if(const course2 = await Course.find(Subject:subject))
-    res.status(200).json(course)
+//    //if(const course2 = await Course.find(Subject:subject))
+//     res.status(200).json(course)
  
-    }catch(error){
-        res.status(400).json({error:error.message})
-}
-}
+//     }catch(error){
+//         res.status(400).json({error:error.message})
+// }
+// }
+const filtersubjectByins =async (req, res) => {
+    console.log(req.params)
+    console.log(req)
+    const instructorid=(req.query.instructorid)
+    const query=(req.query.query)
+    const x = await Course.find({Subject:query,INSid:mongoose.Types.ObjectId(instructorid)})
+    res.status(200).json(x);}
 //#20
 const searchformyowncoursebysubjecttitleinstructor = async (req, res) => {
     const {subject,instructor} = req.body
@@ -101,6 +110,17 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
         return res.status(500).json({error: error.message})
     }
 }
+//delete course
+const DeleteCourse=async(req, res) => {
+    try {
+      await Course.findByIdAndDelete(req.params.id);
+    
+          res.json({ msg: "Deleted Success!" });}
+         catch (err) {
+          return res.status(500).json({ msg: err.message });
+        }}
+
+      
 
 //export the functions here
-module.exports = {getInstructors,instructerViewCourseByTitle,addCourse,instructorFilterHisCourseBySubject,searchforcoursebysubjecttitleinstructor,searchformyowncoursebysubjecttitleinstructor}
+module.exports = {filtersubjectByins,DeleteCourse,getInstructors,instructerViewCourseByTitle,addCourse,searchforcoursebysubjecttitleinstructor,searchformyowncoursebysubjecttitleinstructor}
