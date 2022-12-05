@@ -19,6 +19,30 @@ const InstructorSchema = new mongoose.Schema({
     Country: {
         type: String, 
         required: false
+    },
+    Contract:{
+        type: String
+    },
+    ContractStatus: {
+        type : String,
+    },
+    Rating:{
+        Type: Number
+    },
+    Reviews:{
+        Type: String
+    },
+    Biography: {
+        type: String,
+        required : true
+    },
+    Email: {
+        type : String,
+        required : true
+    },
+    NoRating:{
+        type: Number,
+        required:false
     }
     }, { timestamps: true })
 

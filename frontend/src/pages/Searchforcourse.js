@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 // import Instructor from "../../../models/Course"
 //import { searchforcoursebysubjecttitleinstructor } from "../controllers/InstructorController"
 
@@ -15,7 +15,8 @@ const Searchforcourse= () => {
 
    // const course = {Title,Subject,Instructor}
     const response = await fetch('/api/Instructor/searchby', {
-      method: 'POST',
+      method : 'GET',
+      // method: 'POST',
       body: JSON.stringify(Title),
       headers: {
         'Content-Type': 'application/json'

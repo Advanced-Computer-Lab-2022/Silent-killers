@@ -14,6 +14,14 @@ import Viewtitlesandmore from './pages/Viewtitlesandmore';
 import Selectcountry from './pages/Selectcountry';
 // import { filterPrice } from '../../controllers/CourseController';
 import Filteronprice from './pages/filteronprice';
+import InstructorRatingandReviews from './pages/InstructorRatingandReviews';
+import Editpass from './pages/Editpass';
+import ViewandAcceptContract from './pages/ViewandAcceptContract';
+import AddPreview from './pages/AddPreview';
+import ViewSolutionsAndAnswers from './pages/ViewSolutionsAndAnswers';
+import CreateQuestions from './pages/CreateQuestions';
+import CreatePromotion from './pages/CreatePromotion'
+
 function App() {
 
   return (
@@ -68,6 +76,34 @@ function App() {
             <Route 
               path="/Searchforcourse" 
               element={<Searchforcourse />} 
+            />
+             <Route 
+              path="/InstructorRatings" 
+              element={<InstructorRatingandReviews />} 
+            />
+             <Route 
+              path="/forgotpass" 
+              element={<Editpass />} 
+            />
+            <Route 
+              path="/viewandacceptcontract/:id" 
+              element={<ViewandAcceptContract />} 
+            />
+             <Route 
+              path="/addpreview/:id" 
+              element={<AddPreview />} 
+            />
+             <Route 
+              path="/viewanswers" 
+              element={<ViewSolutionsAndAnswers />} 
+            />
+            <Route 
+              path="/addquestion" 
+              element={<CreateQuestions />} 
+            />
+            <Route 
+              path="/createpromotion" 
+              element={<CreatePromotion />} 
             />
           </Routes>
         </div>

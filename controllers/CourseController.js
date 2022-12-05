@@ -17,7 +17,7 @@ const getCoursesPrice = async (req, res) => {
         const element = courses[index];
         console.log(element.id);
     }
-    res.status(200).json(courses.Price)
+    res.status(200).json(courses)
 }
 
 const filterRate = async(req,res) => {
@@ -121,5 +121,22 @@ const editcourse = async(req, res) => {
     const course=await Course.findByIdAndUpdate(req.params.id,{Title:title,InstructorName:InstructorName,TotalHoursOfCourse:totalhrsofcourse,Rating:rating,Subtitles : subtitles,Subject:subject,Summary : summary , Exercises:exercises , Price:price,TotalHoursOfEachSubtitle : totalhrssubtitle})
     res.status(200).json(course)}
 
+    const courseRating = async(req,res) => {
+        //const id=req.params.id;
+        const {rating} = req.body;
+            try{
+        const x = await Course.findById(req.params.id)
+        const inc = x.NoRating + 1
+        const avg = (x.Rating + rating)/(x.NoRating)
+         const course = await Course.findByIdAndUpdate(req.params.id,{Rating:avg , NoRating:inc} )
+                console.log(course)
+           
+            res.status(200).json(course)
+         
+            }catch(error){
+                res.status(400).json({error:error.message})
+            }
+        }
 
-module.exports = {getCourses,getCoursesPrice,editcourse,filterRate,filterPrice,filterSubject,filtersubjectorrating}
+
+module.exports = {getCourses,getCoursesPrice,editcourse,filterRate,filterPrice,filterSubject,filtersubjectorrating,courseRating}

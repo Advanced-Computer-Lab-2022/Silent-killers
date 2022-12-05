@@ -14,6 +14,10 @@ const CourseSchema = new mongoose.Schema({
         type : Number,
         required : false
     },
+    PreviewVideo:{
+        type: String,
+        required: false
+    },
     InstructorName: {
         type:String,
         required : false
@@ -23,12 +27,20 @@ const CourseSchema = new mongoose.Schema({
         required: false
     },
     Rating:{
-        type: String,
+        type: Number,
         required: false
     },
     Subtitles:{
         type:String,
         required:true
+    },
+    SubtitlesDES:{
+        type:String,
+        required:false
+    },
+    NoRating:{
+        type: Number,
+        required:false
     },
     Subject:{
         type: String,
@@ -50,6 +62,19 @@ const CourseSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    VideoLink:{
+        type: String,
+        required : false
+    },
+    Reviews:{
+        type : String
+    },
+    Discount:{
+        type : Number
+    },
+    NoOfDays:{
+        type : Number
+    }
     
     }, { timestamps: true })
 

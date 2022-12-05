@@ -22,7 +22,7 @@ return (
 		<Link to="/filteronsubjectorrating">filteronsubjectorrating</Link>
 		</li>
     <li>
-		<Link to="//filteronprice">/filteronprice</Link>
+		<Link to="/filteronprice">filteronprice</Link>
 		</li>
     <li>
 		<Link to="/selectcountry">selectcountry</Link>
