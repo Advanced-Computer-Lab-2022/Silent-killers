@@ -20,9 +20,9 @@ router.get('/filterratingorsubject',filtersubjectorrating)
 router.get('/filterprice',filterPrice)
 router.post('/addpreviewvid/:id',addPreviewVid)
 router.post('/AcceptContract/:id',AcceptContract)
-router.patch('.EditPassword/:id',editpassword)
-router.patch('/EditBio/:id',editBioEm)
-router.post('/adddiscount/:id',addDiscount)
+router.patch('/EditPassword',editpassword)
+router.patch('/EditBio',editBioEm)
+router.patch('/adddiscount',addDiscount)
 router.post('/addquestion',addQuestion)
 router.get('/viewratingsandreviews',viewratingandreviews)
 router.post('/forgotpassword',forgetpass2)
@@ -30,6 +30,7 @@ router.post('/fgpass',fgpass3)
 router.post('/fgpass4/:userId/:token',fgpasstry)
 router.post('/Adddesc/:id',addYoutubeAndDesc)
 router.patch('/setanswer',setanswer)
+
 
 
 

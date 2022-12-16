@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import Getinstructors from './Getinstructors';
+import axios from 'axios';
 
-const Editpass=()=>
-{const params = new URLSearchParams(window.location.search);
-  const userId = params.get('userId');
-const [password, setName] = useState("");
-useEffect(() => {
-  let item={password}
-  console.warn("item",item)
-  fetch(`/api/Instructor/changepass/userId=${userId}`, {
-    method: 'PATCH',
-    headers:{
-      'Accept':'application/json',
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify(item)
-  }).then((result) => {
-    result.json().then((resp) => {
-      console.warn(resp)
-      Getinstructors()
-    })
-  })})
+
+
+const Editpass = () => { 
+
+    
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get('id');
+  console.log(userId);
+  const [password,setPassword] = useState([]);
+
+ 
+      
+  
+      const changepass =  async () => {
+           await axios.patch(`http://localhost:8000/api/Instructor/EditPassword/?id=${userId}`,{password:password}).then(
+          (res) => { 
+            console.log(res.data)
+              
+          }
+           );
+
+    }
 
   return (
     <div className="App">
@@ -28,9 +30,9 @@ useEffect(() => {
       <table border="1" style={{ float: 'left' }}>
       </table>
       <div>
-      <input type="text" value={password} onChange={(e)=>{setName(e.target.value)}} /> <br /><br />
+      <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} /> <br /><br />
         
-        <button onClick={Editpass} >edit password</button>  
+        <button onClick={changepass} >edit password</button>  
       </div>
     </div>
   );

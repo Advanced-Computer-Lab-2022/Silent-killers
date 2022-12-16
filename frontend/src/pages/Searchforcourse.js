@@ -4,10 +4,15 @@ import { useState } from "react"
 
 // components
 
-const Searchforcourse= () => {
-  const [Title,setTitle] = useState(null)
-  const [Subject,setSubject] = useState(null)
-  const [Instructor,setInstructor] = useState(null)
+// let myVar = (data) => {
+  
+//   const[Title, setTitle] = useState();
+
+// }
+const Searchforcourse= (t) => {
+  //const [Title,setTitle] = useState();
+  // const [Subject,setSubject] = useState(null)
+  // const [Instructor,setInstructor] = useState(null)
 
   
   const handleSubmit = async (e) => {
@@ -17,7 +22,7 @@ const Searchforcourse= () => {
     const response = await fetch('/api/Instructor/searchby', {
       method : 'GET',
       // method: 'POST',
-      body: JSON.stringify(Title),
+      body: JSON.stringify("ytuytyut"),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -26,10 +31,11 @@ const Searchforcourse= () => {
       const json = await response.json()
 
       if (response.ok) {
+        console.log("VALID RESPONSE!!!!");
         //setCourse(json)
-        setTitle('')
-        setSubject('')
-        setInstructor('')
+        // setTitle('')
+        // setSubject('')
+        // setInstructor('')
       }
     }
 
@@ -50,7 +56,7 @@ const Searchforcourse= () => {
         <input 
           type="text" 
           onChange={(e) => Searchforcourse(e.target.value)} 
-           value={Title}
+           value={'vvv'}
         />
 <button>Search by Title </button>
 {/* <div className="home">
@@ -61,20 +67,20 @@ const Searchforcourse= () => {
       </div>
     ))}</h1>
     </div> */}
-<label>Course Subject</label>
+{/* <label>Course Subject</label>
         <input 
           type="text" 
           onChange={(e) => Searchforcourse(e.target.value)} 
           value={Subject}
         />
-        <button>Search by Subject</button>
-<label>Course Instructor</label>
+        <button>Search by Subject</button> */}
+{/* <label>Course Instructor</label>
         <input 
           type="text" 
           onChange={(e) => Searchforcourse(e.target.value)} 
           value={Instructor}
         />
-        <button>Search by Instructor</button>
+        <button>Search by Instructor</button> */}
     
         </form>
         

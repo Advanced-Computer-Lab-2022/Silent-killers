@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 // components
-import WatchVideo from "../components/WatchVideo"
+import Coursedetails from "../components/Coursedetails2"
 
-const Watchvideo = () => {
+const Results2 = () => {
   const [Course,setCourse] = useState(null)
 
   useEffect(() => {
@@ -23,11 +23,11 @@ const Watchvideo = () => {
     <div className="home">
       <div className="Courses">
         {Course && Course.map(Course => (
-          <WatchVideo Course={Course} key={Course._id} />
+          <Coursedetails Course={Course} key={Course._id} />
         ))}
       </div>
     </div>
   )
 }
 
-export default Watchvideo
+export default Results2

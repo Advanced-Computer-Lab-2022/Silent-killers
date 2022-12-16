@@ -4,8 +4,27 @@ const Schema = mongoose.Schema
 const GuestSchema = new mongoose.Schema({
     Country: {
         type: String,
-        required: false
+        required: false,
+        Password:{
+            type:String,
+            required:true,
+        },
+        Firstname:{
+            type:String,
+            required:true,
+        },
+        Lastname:{
+            type:String,
+            required:true,
+        },
+        Gender:{
+            type:String,
+            required:true,
+        },
+        Type:{
+            type:Number,
+            default:0 //0=individual 1=corporate
+        }
+    }}, { timestamps: true })
     
-}}, { timestamps: true })
-
-module.exports = mongoose.model('Guest', GuestSchema)
+    module.exports = mongoose.model('Guest', GuestSchema)

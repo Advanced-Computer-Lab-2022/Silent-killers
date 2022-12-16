@@ -8,9 +8,9 @@ const mongoose = require('mongoose')
 //functions here
 //37
 const viewgrade = async (req,res) =>{
-    const {instructor} = req.body
+    //const {trainee} = req.body
     try{
-        const exercises = await Exercises.find({InstructorID:instructor})
+        const exercises = await Exercises.find({TraineeUsername:'Test1'})
       res.status (200).json(exercises)
   }
   catch (error) {
@@ -35,9 +35,9 @@ const viewgrade = async (req,res) =>{
       }
 
       const viewCourseDetails = async (req,res) =>{
-        const {regCourseTitle} = req.body
+        const id =params.req.body
         try{
-            const course = await Course.find({Title:regCourseTitle})
+            const course = await Course.findById(id)
              res.status (200).json(course)
          }
         catch (error) {

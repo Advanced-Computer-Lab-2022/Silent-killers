@@ -2,7 +2,6 @@ const Instructor = require('../models/Instructor')
 const Course = require('../models/Course')
 const mongoose = require('mongoose')
 const {ObjectId} = mongoose.Schema;
-
 //functions here
 
 const nodemailer=require('nodemailer');
@@ -174,6 +173,7 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
         }else{
             if(title){
                 const course = await Course.find({Title:title})
+                alert(title);
                 return res.status(200).json(course)
             }
             else{
@@ -183,6 +183,11 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
                 }
             }
         }
+        console.log(subject);
+        console.log(instructor);
+        console.log(title);
+
+    
         throw new Error("No such Course")
     }
     catch(error){
@@ -204,13 +209,14 @@ const AcceptContract = async(req,res) =>{
 }
 
 const editpassword = async(req, res) => {
+    
     try{
         const{
             password
         } =req.body;
         console.log("Req Body");
-        const editpass = await Instructor.findById(req.params.id);
-        if(editpass)
+        const editpass = await Instructor.findByIdAndUpdate(req.query.id,{Password:password});
+        if(editpass._id)
         {
             editpass.Password =password;
         }
@@ -223,38 +229,43 @@ const editpassword = async(req, res) => {
 
 }
 const editBioEm = async(req, res) => {
+    console.log("reached")
     try{
         const{
             biography,
-            email,
-        } =req.body;
+            email
+        } = req.body;
         console.log("Req Body");
-        const editbio = await Instructor.findById(req.params.id);
-        if(editbio)
+        const instructor = await Instructor.findByIdAndUpdate(req.query.id,{Biography:biography,Email:email});
+    
+        if(instructor._id)
         {
-        editbio.Biography = biography;
-        editbio.Email = email;
+
+            console.log(instructor.Biography)
+            console.log(instructor.Email)
+        instructor.Biography = biography;
+        instructor.Email = email;
         }
-        const edit = await editbio.save();
-        res.json(edit);
+        const edit = await instructor.save();
+        res.send("hello");
     } catch(err) {
         console.log("Error");
         return res.status(500).json({msg: err.message});
     }
 }
-
 const addDiscount=async(req,res)=>{
     try{
     const{discount,noofdays} =req.body;
     console.log("Req Body");
-    const id = await Course.findById(req.params.id);
-    if(id)
+    const ss = await Course.findByIdandUpdate(req.query.id,{Discount:discount,NoOfDays:noofdays});
+    if(ss._id)
     {
-    id.Discount=discount;
-    id.NoOfDays=noofdays;
+    ss.Discount=discount;
+    ss.NoOfDays=noofdays;
     }
     const edit = await id.save();
-    res.json(edit);}
+    res.json(edit);
+}
     catch(err) {
         console.log("Error");
         return res.status(500).json({msg: err.message});

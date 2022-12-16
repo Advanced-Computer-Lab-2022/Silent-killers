@@ -21,6 +21,20 @@ import AddPreview from './pages/AddPreview';
 import ViewSolutionsAndAnswers from './pages/ViewSolutionsAndAnswers';
 import CreateQuestions from './pages/CreateQuestions';
 import CreatePromotion from './pages/CreatePromotion'
+import SetAnswer from './pages/SetAnswer'
+import SubmitAnswer from './pages/SubmitAnswer'
+import Watchvideo from './pages/WatchVideo';
+//import ViewCourseDetails from "./pages/ViewCourseDetails"
+import RateCourse from './pages/RateCourse';
+import ViewTraineeGrade from './pages/ViewTraineeGrade';
+import ViewRatingsAndReviews from './pages/ViewRatingsAndReviews'
+import Results1 from './pages/Results1';
+import Results2 from './pages/Results2'
+import Sample from './pages/Sample'
+import Editbio from './pages/EditBio';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Logout  from './pages/Logout';
 
 function App() {
 
@@ -105,6 +119,64 @@ function App() {
               path="/createpromotion" 
               element={<CreatePromotion />} 
             />
+            <Route
+             path="/SetAnswer" 
+              element={<SetAnswer />} 
+            />
+             <Route 
+              path="/SubmitAnswer" 
+              element={<SubmitAnswer />} 
+            />
+             <Route 
+              path="/watchvideo" 
+              element={<Watchvideo />} 
+            />
+            {/* <Route
+            path = "/ViewCourseDetails"
+            element = {<ViewCourseDetails/>}
+            /> */}
+            <Route 
+              path="/RateCourse" 
+              element={<RateCourse />} 
+            />
+<Route 
+              path="/ViewTraineeGrade" 
+              element={<ViewTraineeGrade />} 
+            />
+            <Route 
+              path="/ViewTraineeGrade/Results1" 
+              element={<Results1 />} 
+            />
+            <Route 
+              path="/ViewRatingsAndReviews" 
+              element={<ViewRatingsAndReviews />} 
+            />
+            <Route 
+              path="/ViewRatingsAndReviews/Results2"
+              element={<Results2 />} 
+            />
+            //test
+            <Route 
+              path="/test"
+              element={<Sample />} 
+            />
+            <Route 
+              path="/editbio"
+              element={< Editbio/>} 
+            />
+            <Route 
+              path="/login"
+              element={< Login/>} 
+            />
+            <Route 
+              path="/signup"
+              element={< Signup/>} 
+            />
+             <Route 
+              path="/logout"
+              element={< Logout/>} 
+            />
+
           </Routes>
         </div>
       </BrowserRouter>
