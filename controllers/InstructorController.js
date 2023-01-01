@@ -356,7 +356,7 @@ const setanswer = async(req, res) => {
                 const getcoursesbypob=async (req, res) => {
                     try {
                     //   const Title = req.body
-                      const courses = await Course.find({}).sort("-Rating").limit(5)
+                      const courses = await Course.find({}).sort("-Rating").limit()
                       res.json(courses);
                     } catch (error) {
                       console.log("-----------course pobular error---------");

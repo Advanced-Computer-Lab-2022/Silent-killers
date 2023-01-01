@@ -72,6 +72,8 @@ const UsersList = () => {
           <TableRow>
             <StyledTableCell align="center">Title</StyledTableCell>
             <StyledTableCell align="center">Subject</StyledTableCell>
+            <StyledTableCell align="center">Preview Video</StyledTableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -93,6 +95,8 @@ const UsersList = () => {
               >
               <TableCell align="center">{author.Title}</TableCell>
               <TableCell align="center">{author.Subject}</TableCell>
+              <TableCell align="center"><Link to="/previewvideo">View Preview Video</Link></TableCell>
+
             </TableRow>
           ))}
         </TableBody>

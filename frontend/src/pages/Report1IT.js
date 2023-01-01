@@ -1,54 +1,133 @@
-import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Table from '@mui/material/Table';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';  
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-const ReportIT = () => { 
-  const params = new URLSearchParams(window.location.search);
-  const course = params.get('courseid')
-  const coursetitle = params.get('coursetitle')
-  const [problem,setproblem] = useState(null)
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+const { useState } = require("react");
 
 
-
-
-      const ttt =  async () => {
-        console.log("i get in here!")
-        await axios.post(`http://localhost:8000/api/IndividualTrainee/reportIT/?course=${course}&coursetitle=${coursetitle}&id=${localStorage.getItem("user")}`,{problem:problem}).then(
-          (res) => {
-          console.log(res.data)
-
+const Report1IT = () => { 
+//   const [Title,setTitle] = useState(null)
+//   const [Subject,setSubject] = useState(null)
+//   const [Instructor,setInstructor] = useState(null)
+//const [results,setresults] = useState(null)
+console.log(localStorage.getItem("user"));
+  const [authors,setAuthors] = useState([]);
+    
+    const getAuthors =  async () => {
+      await axios.get(`http://localhost:8000/api/Course/getcourses`).then(
+        (res) => { 
+            const course = res.data
+            setAuthors(course);
+            console.log(course[0]);
+            console.log(course[0]._id);
+            //localStorage.setItem("course" , course[0]._id);
+            //console.log(localStorage.getItem("course"));
+            
         }
-           );
+         );
+       
+    
 
     }
+    return(
 
-    const t1 =  async () => {
-        setproblem("technical")
-    }
-    const t2 =  async () => {
-        setproblem("financial")
-    }
+        // visualize authors in a table map over authors
+        
+        <div className="UsersList">
+            <Box sx={{marginBottom: 2}}>
+            <Button variant="contained"
+            onClick={getAuthors}
+            margin="normal"
+            padding="normal"
+            >View Courses</Button>
+            {/* margin */}
+            </Box>
+            {/* <label>Title : </label> */}
+      {/* <input type="text" value= {Title} onChange={(e)=>{setTitle(e.target.value)}} Price/> <br /><br />
+      <label>Subject : </label>
+      <input type="text" value={Subject} onChange={(e)=>{setSubject(e.target.value)}} /> <br /><br />
+      <label>Instructor : </label>
+      <input type="text" value={Instructor} onChange={(e)=>{setInstructor(e.target.value)}} /> <br /><br /> */}
+        
+        
+            
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="center">Title</StyledTableCell>
+            <StyledTableCell align="center">Subject</StyledTableCell>
+            <StyledTableCell align="center">Preview Video</StyledTableCell>
 
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {authors.map((author) => (
+            <TableRow
+            hover
+            sx={{
+                "&:hover":{
+                cursor: "pointer",
+                backgroundColor: "#f5f5f5",
+                width: "100%"
+                }
+            }}
+            
+            onClick={() => window.location.href=`/ReportIT/?courseid=${author._id}&coursetitle=${author.Title}`}
+              key={author._id}
+              
 
-  return (
-    <div className="App">
+              >
+              <TableCell align="center">{author.Title}</TableCell>
+              <TableCell align="center">{author.Subject}</TableCell>
+              <TableCell align="center"><Link to="/previewvideo">View Preview Video</Link></TableCell>
 
-      <table border="1" style={{ float: 'left' }}>
-      </table>
-      <div>
-      <p>Problem: {problem}</p>
-      <button onClick={t1} >Technical</button>
-      <p></p>
-      <button onClick={t2} >Financial</button>
-      <p></p>
-      <label> Other </label>
-      <input type="problem" value={problem} onChange={(e)=>{setproblem(e.target.value)}} /> <br /><br />
-      </div>
-     <button onClick={ttt} >Submit Report</button>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+            {/* <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                {authors.map((author) => (
+                    
+                    <Link to={`/filter?userId=${author._id}`}>
+                    <tr>
+                    
+                        <td>{author.name} </td>
+                        <td>{author.email}</td>
 
+                    </tr>
+                    </Link>
+                ))}
+               
+            </table> */}
+        </div>
+                
 
-
-    </div>
-
-  );
+    )
 }
-  export default ReportIT;
+export default Report1IT;

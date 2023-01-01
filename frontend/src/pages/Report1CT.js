@@ -66,7 +66,6 @@ console.log(localStorage.getItem("user"));
       <input type="text" value={Subject} onChange={(e)=>{setSubject(e.target.value)}} /> <br /><br />
       <label>Instructor : </label>
       <input type="text" value={Instructor} onChange={(e)=>{setInstructor(e.target.value)}} /> <br /><br /> */}
-      {authors!=null && authors.length!=0?(<Link to="/previewvideo">View Preview Video</Link>) :("")}
         
         
             
@@ -76,6 +75,8 @@ console.log(localStorage.getItem("user"));
           <TableRow>
             <StyledTableCell align="center">Title</StyledTableCell>
             <StyledTableCell align="center">Subject</StyledTableCell>
+            <StyledTableCell align="center">Preview Video</StyledTableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -97,6 +98,8 @@ console.log(localStorage.getItem("user"));
               >
               <TableCell align="center">{author.Title}</TableCell>
               <TableCell align="center">{author.Subject}</TableCell>
+              <TableCell align="center"><Link to="/previewvideo">View Preview Video</Link></TableCell>
+
             </TableRow>
           ))}
         </TableBody>

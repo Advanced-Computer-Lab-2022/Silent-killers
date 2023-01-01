@@ -17,7 +17,7 @@ return (
 		<Link to="/viewallavrefunds">View and accept refunds</Link>
 		</li>
         <li>
-		<Link to="/addamin">Add a new admin </Link>
+		<Link to="/addadmin">Add a new admin </Link>
 		</li>
 		<li>
 		<Link to="/addinstructor">Add a new instructor </Link>
