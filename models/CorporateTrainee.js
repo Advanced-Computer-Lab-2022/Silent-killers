@@ -19,6 +19,10 @@ const CorporateTraineeSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    Type : {
+        type : Number,
+        required : false
+    }
     
     }, { timestamps: true })
 

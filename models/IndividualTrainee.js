@@ -14,6 +14,22 @@ const IndividualTraineeSchema = new mongoose.Schema({
     Country: { 
         type: String,
         required: false
+    } ,
+       Firstname:{
+        type:String,
+        required:true,
+    },
+    Lastname:{
+        type:String,
+        required:true,
+    },
+    Gender:{
+        type:String,
+        required:true,
+    },
+    Type : {
+        type : Number,
+        required : false
     }
     }, { timestamps: true })
 

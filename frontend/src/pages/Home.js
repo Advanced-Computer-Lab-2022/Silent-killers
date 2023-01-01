@@ -42,6 +42,9 @@ return (
     <li>
 		<Link to="/Searchforcourse">Searchforcourse</Link>
 		</li>
+		<li>
+		<Link to="/forgotpass">Edit Password</Link>
+		</li>
 	</ul>
 	</div>
 );

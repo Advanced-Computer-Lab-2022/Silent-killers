@@ -72,9 +72,13 @@ const CourseSchema = new mongoose.Schema({
     Discount:{
         type : Number
     },
+    PriceBeforePromotion:{
+        type : Number
+    },
     NoOfDays:{
         type : Number
     }
+
     
     }, { timestamps: true })
 

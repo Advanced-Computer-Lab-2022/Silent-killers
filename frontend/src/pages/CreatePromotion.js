@@ -1,56 +1,46 @@
-import { useState } from "react"
-const Createpromotion = () => {
-    const [Username,setUsername] = useState('')
-    const [Password,setPassword] = useState('')
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+
+const Createpromotion = () => { 
+
+    
+  // const params = new URLSearchParams(window.location.search);
+  const [discount,setdiscount] = useState(null);
+  const [nodays,setdays] = useState(null);
+
+ 
+      
   
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-  
-      const instructor = {Username,Password}
-      //??
-      const response = await fetch('/api/Instructor/adddiscount/:id', {
-        method: 'POST',
-        body: JSON.stringify(instructor),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const json = await response.json()
-  
-      // if (!response.ok) {
-      //   setError(json.error)
-      // }
-      if (response.ok) {
-       // setError(null)
-        setUsername('')
-        setPassword('')
-        console.log('promotion added:', json)
+  const setdiscountt =  async () => {
+    
+    
+       await axios.patch(`http://localhost:8000/api/Instructor/adddiscount?id=${localStorage.getItem("course")}`, {discount:discount,noofdays:nodays}).then(
+      (res) => { 
+          console.log(res.data)
+          //console.log(email)
+          
+          
       }
-  
-    }
-  
-    return (
-      <form className="create" onSubmit={handleSubmit}> 
-        <h3>create promotion</h3>
-  
-        <label>discount:</label>
-        <input 
-          type="text" 
-          onChange={(e) => setUsername(e.target.value)} 
-          value={Username}
-        />
-  
-      <label>number of days:</label>
-        <input 
-          type="text" 
-          onChange={(e) => setPassword(e.target.value)} 
-          value={Password}
-        />
-  
+       );
+
+}
+
+
+  return (
+    <div className="App">
+      
+      <table border="1" style={{ float: 'left' }}>
+      </table>
+      <div>
+      <label>Discount : </label>
+      <input type="number" value={discount} onChange={(e)=>{setdiscount(e.target.value)}} /> <br /><br />
+      <label>Number of days : </label>
+      <input type="number" value={nodays} onChange={(e)=>{setdays(e.target.value)}} /> <br /><br />
+      <button onClick={setdiscountt} >set discount</button> 
         
-  
-        <button>Add promotion</button>
-      </form>
-    )
-  }
-export default Createpromotion
+        
+      </div>
+    </div>
+  );}
+
+  export default Createpromotion;

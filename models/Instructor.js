@@ -34,15 +34,20 @@ const InstructorSchema = new mongoose.Schema({
     },
     Biography: {
         type: String,
-        required : true
+        required : false
     },
     Email: {
         type : String,
-        required : true
+        required : false
     },
     NoRating:{
         type: Number,
         required:false
+    },
+    Type : {
+        type : Number,
+        required : false
+        
     }
     }, { timestamps: true })
 

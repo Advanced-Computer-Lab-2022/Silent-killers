@@ -5,10 +5,12 @@ import InstructorRatingsandReviews from "../components/InstructorRatingsandRevie
 
 const InstructorRatingandReviews = () => {
   const [Instructor,setInstructor] = useState(null)
+  const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await fetch('/api/Instructor/getinstructor')
+      const response = await fetch('/api/Instructor/getinsbyid/?id=${id}')
       const json = await response.json()
 
       if (response.ok) {

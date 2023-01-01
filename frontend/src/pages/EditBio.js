@@ -1,83 +1,44 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-const Editbio = (props) => {
-  let navigation = useNavigate();
-  const initialInputValues = {
-    id:'',
-    bio: '',
-    email: '',
-  } 
-  const [values, setValues] = useState(initialInputValues)
+import axios from 'axios';
 
-  //show admin info before updating
-  const {id} = useParams()
-  useEffect(()=>{
-   if(id){
-       getInstructor(id)
-   }
-  },[id])
-  const getInstructor = async (id) =>{
-      const response = await axios.get(`http://localhost:8000/api/Instructor/editbio/${id}`);
-      console.log("response", response)
-      if (response.status === 200){
-          setValues(response.data);
-      }
-  };
+const Editbio = () => { 
 
-    const handleInputChange = (e) => {
-      const name = e.target.name
-      const value = e.target.value
-      setValues({
-        ...values,
-        [name]: value,
-      })
-    }   
-
-    const updateAdmin = async (e, id) =>{
-      e.preventDefault();
-        await axios.patch(`http://localhost:8000/api/Instructor/editbio/${id}`, {
-        ...values
-        }
-        ).then((res) =>{    
-          console.log(res)
-            if (res.data.message === 'UPDATED') {
-              setValues(res.data.data)
-                alert("admin updated")
-                }
-          })   
-  };
-  return (
-          <form method='Patch'>
-           <ul>
-           <li>
-                <label>id</label>
-                <input name="id" value={values.id} onChange={handleInputChange} type="text" />
-            </li>
-            <li>
-                <label>Biography</label>
-                <input name="bio" value={values.bio} onChange={handleInputChange} type="text" />
-            </li>
-            <li> 
-                <label>Email</label>
-                <input name="email" value={values.email} onChange={handleInputChange} type="email"  />
-           </li>
-            
-            <li>
-                 
-                <button className='submit-button' onClick={updateAdmin} type="submit" > 
-                  Update
-                </button> 
-                
-            </li>
-           </ul>
-          </form>
-        
-
-      
     
+
+
+  const [bio,setBio] = useState(null);
+  const [email,setEmail] = useState(null);
+ 
+      
+  
+      const setbio =  async () => {
+        console.log(localStorage.getItem("user"))
+        console.log("i get in here!")
+        console.log(bio)
+        
+           await axios.patch(`http://localhost:8000/api/Instructor/EditBio?id=${localStorage.getItem("user")}`, {biography:bio,email:email}).then(
+          (res) => { 
+              console.log(res.data)
+              //console.log(email)
+              
+              
+          }
+           );
+
+    }
+
+  return (
+    <div className="App">
+      
+      <table border="1" style={{ float: 'left' }}>
+      </table>
+      <div>
+      <input type="text" value= {bio} onChange={(e)=>{setBio(e.target.value)}} /> <br /><br />
+      <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}} /> <br /><br />
+        
+        <button onClick={setbio} >set email and biography</button>  
+      </div>
+    </div>
   );
 }
-
-export default Editbio;
+  export default Editbio;

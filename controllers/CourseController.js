@@ -46,16 +46,16 @@ const filterSubject= async(req,res) => {
  
     }
     const filtersubjectorrating = async (req, res) => {
-        const {subject} = req.body
-        const {rating} = req.body
+        const {Subject} = req.body
+        const {Rating} = req.body
     
         try{
-            if(subject){
-                const course = await Course.find({Subject:subject})
+            if(Subject){
+                const course = await Course.find({Subject:Subject})
                 return res.status(200).json(course)
             }else{
-                if(rating){
-                    const course = await Course.find({Rating:rating})
+                if(Rating){
+                    const course = await Course.find({Rating:Rating})
                     return res.status(200).json(course)
                 }
                 
@@ -127,7 +127,7 @@ const editcourse = async(req, res) => {
             try{
         const x = await Course.findById(req.params.id)
         const inc = x.NoRating + 1
-        const avg = (x.Rating + rating)/(x.NoRating)
+        const avg = ((x.Rating*x.NoRating) + rating)/(x.NoRating+1)
          const course = await Course.findByIdAndUpdate(req.params.id,{Rating:avg , NoRating:inc} )
                 console.log(course)
            
@@ -137,6 +137,15 @@ const editcourse = async(req, res) => {
                 res.status(400).json({error:error.message})
             }
         }
+const viewcoursebyid = async(req,res) => {
+    const {id} = req.query;
+    try{
+        const course = await Course.findById(id);
+        res.status(200).json(course)
+}
+    catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
 
-
-module.exports = {getCourses,getCoursesPrice,editcourse,filterRate,filterPrice,filterSubject,filtersubjectorrating,courseRating}
+module.exports = {getCourses,getCoursesPrice,editcourse,filterRate,filterPrice,filterSubject,filtersubjectorrating,courseRating , viewcoursebyid}

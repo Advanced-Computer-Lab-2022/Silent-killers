@@ -8,8 +8,9 @@ const ViewSolutionsAndAnswers = () => {
 
     const sol = {Username,Exerciseno}
     //??
+    //38 ?
     const response = await fetch('/api/IndividualTrainee/viewanswers', {
-      method: 'GET',
+      method: 'POST',
       body: JSON.stringify(sol),
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +50,7 @@ const ViewSolutionsAndAnswers = () => {
 
       
 
-      <button>Proceed</button>
+      <button onClick={handleSubmit}>Proceed</button>
     </form>
   )
 }

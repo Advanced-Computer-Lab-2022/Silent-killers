@@ -1,6 +1,6 @@
 const express = require('express')
 const{
-getInstructors,instructerViewCourseByTitle,addCourse,instructorFilterHisCourseBySubject,searchforcoursebysubjecttitleinstructor,searchformyowncoursebysubjecttitleinstructor,addPreviewVid,AcceptContract, editpassword, editBioEm, addDiscount, addQuestion, viewratingandreviews,forgetpass2,fgpass3,fgpasstry, addYoutubeAndDesc,setanswer
+getInstructors,instructerViewCourseByTitle,addCourse,instructorFilterHisCourseBySubjectorprice,searchforcoursebysubjecttitleinstructor,searchformyowncoursebysubjecttitleinstructor,addPreviewVid,AcceptContract, editpassword, editBioEm, addDiscount, addQuestion, viewratingandreviews,forgotPassword, addYoutubeAndDesc,setanswer, getInstructorbyid , getcoursesbypob , viewreportsINS , reportINS , followup , Viewamountowed
 } = require('../controllers/InstructorController')
 const{
 filtersubjectorrating,filterPrice
@@ -13,23 +13,30 @@ const router = express.Router()
 router.get('/getinstructor',getInstructors)
 router.get('/viewbytitle',instructerViewCourseByTitle)
 router.post('/addcourses',addCourse)
-router.get('/filtersubject',instructorFilterHisCourseBySubject)
+router.post('/insfilter',instructorFilterHisCourseBySubjectorprice)
 router.get('/searchbythings',searchformyowncoursebysubjecttitleinstructor)
-router.get('/searchby',searchforcoursebysubjecttitleinstructor)
+//changed get to post in 19 on 1:19 14/12
+router.post('/searchby',searchforcoursebysubjecttitleinstructor)
 router.get('/filterratingorsubject',filtersubjectorrating)
 router.get('/filterprice',filterPrice)
-router.post('/addpreviewvid/:id',addPreviewVid)
-router.post('/AcceptContract/:id',AcceptContract)
-router.patch('.EditPassword/:id',editpassword)
-router.patch('/EditBio/:id',editBioEm)
-router.post('/adddiscount/:id',addDiscount)
+router.patch('/addpreviewvid',addPreviewVid)
+router.post('/AcceptContract',AcceptContract)
+router.patch('/EditPassword',editpassword)
+router.patch('/EditBio',editBioEm)
+// router.patch('/editbio',editBioEm)
+router.patch('/adddiscount',addDiscount)
 router.post('/addquestion',addQuestion)
 router.get('/viewratingsandreviews',viewratingandreviews)
-router.post('/forgotpassword',forgetpass2)
-router.post('/fgpass',fgpass3)
-router.post('/fgpass4/:userId/:token',fgpasstry)
-router.post('/Adddesc/:id',addYoutubeAndDesc)
+router.patch('/Adddesc',addYoutubeAndDesc)
 router.patch('/setanswer',setanswer)
+router.post('/getinsbyid',getInstructorbyid)
+router.get('/mostrating',getcoursesbypob)
+router.post('/forgot',forgotPassword)
+router.post('/viewreportsINS',viewreportsINS)
+router.post('/reportINS',reportINS)
+router.patch("/followup",followup)
+router.post("/Viewamountowed",Viewamountowed)
+router.post('/inssearchby' , searchformyowncoursebysubjecttitleinstructor)
 
 
 

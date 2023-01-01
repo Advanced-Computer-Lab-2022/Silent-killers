@@ -1,41 +1,57 @@
 import { useEffect, useState } from "react"
-import axios from 'axios';
+//import axios from 'axios';
 
 
 // components
-import InstructorContract from "../components/InstructorContract"
 
-const ViewandAcceptContract = () => {
-  const [Course,setCourse] = useState(null)
+
+const Addpreviewvid = () => {
+  const [link,setlink] = useState(null)
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-    const fetchCourses=  async () => {
-        //get the blogs from the backend
-        
-            await axios.post(`http://localhost:8000/api/Instructor/addpreviewvid?userId=${id}`).then(
-            (res) => { 
-                const Course = res.data
-                console.log(Course)
-                setCourse(Course)
-                
-            }
-            );
-        
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
+    const body = {link}
+    //??
+    const response = await fetch(`/api/Instructor/addpreviewvid?=${link},?=${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+
+    // if (!response.ok) {
+    //   setError(json.error)
+    // }
+    if (response.ok) {
+     // setError(null)
+     setlink('')
+     console.log('Link added:', json)
     }
 
-    fetchCourses()
+  }
    
 
   return (
-    <div className="home">
-      <div className="Courses">
-        {Course && Course.map(Course => (
-          <InstructorContract Course={Course} key={Course._id} />
-        ))}
-      </div>
+    <div>
+    <label>Video Link : </label>
+    <input 
+      type="text" 
+     onChange={(e) => setlink(e.target.value)} 
+     value={link}
+    />
+    <button
+    onClick={handleSubmit}
+      type = "submit">
+      Add link
+      
+      
+    </button>
     </div>
   )
 }
 
-export default ViewandAcceptContract
+export default Addpreviewvid

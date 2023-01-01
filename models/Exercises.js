@@ -15,6 +15,18 @@ const ExercisesSchema = new mongoose.Schema({
         type:String,
         required:false
     },
+    INSid: { type: mongoose.Types.ObjectId,
+      ref: 'Instructor',
+      required: false
+  },
+  CTid: { type: mongoose.Types.ObjectId,
+      ref: 'CorporateTrainee',
+      required: false
+  },
+  ITid: { type: mongoose.Types.ObjectId,
+      ref: 'IndividualTrainee',
+      required: false
+  },
     Questions:
         [
             {
@@ -45,7 +57,11 @@ const ExercisesSchema = new mongoose.Schema({
         type:{ type: mongoose.Types.ObjectId,
             ref: 'Course',
              required: false },
-    }
+    },
+    Grade:{
+      type:String,
+      required:false
+  }
     }, { timestamps: true })
 
     module.exports = mongoose.model('Exercises', ExercisesSchema)
