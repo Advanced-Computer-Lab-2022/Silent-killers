@@ -70,8 +70,7 @@ const Createquestions = () => {
         type="text" 
         onChange={(e) => setQuestions(e.target.value)} 
         value={Questions}
-        onChange={(e) => setQuestions(e.target.value)} 
-        value={Questions}
+ 
       />
 
 
