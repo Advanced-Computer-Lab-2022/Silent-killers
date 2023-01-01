@@ -8,7 +8,6 @@ const IndividualTrainee = require('../models/IndividualTrainee');
 const CorporateTrainee = require('../models/CorporateTrainee');
 const mongoose = require('mongoose')
 const {ObjectId} = mongoose.Schema;
-
 //functions here
 
 const nodemailer=require('nodemailer');
@@ -163,6 +162,7 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
         }else{
             if(title){
                 const course = await Course.find({Title:title})
+                alert(title);
                 return res.status(200).json(course)
             }
             else{
@@ -225,7 +225,6 @@ const AcceptContract = async(req,res) =>{
 }
 
 const editpassword = async(req, res) => {
-    
     try{
         const{
             password

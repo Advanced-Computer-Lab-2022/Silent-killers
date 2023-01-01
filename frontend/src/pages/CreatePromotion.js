@@ -44,3 +44,8 @@ const Createpromotion = () => {
   );}
 
   export default Createpromotion;
+      </div>
+    </div>
+  );}
+
+  export default Createpromotion;

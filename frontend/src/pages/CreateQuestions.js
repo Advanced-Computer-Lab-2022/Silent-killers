@@ -65,8 +65,11 @@ const Createquestions = () => {
       />
 
      <label> Questions</label>
+     <label> Questions</label>
       <input 
         type="text" 
+        onChange={(e) => setQuestions(e.target.value)} 
+        value={Questions}
         onChange={(e) => setQuestions(e.target.value)} 
         value={Questions}
       />

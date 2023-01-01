@@ -12,6 +12,8 @@ const CorporateTraineeRouter = require('./routes/CorporateTraineeRoutes')
 const GuestRouter = require('./routes/GuestRoutes')
 const IndividualTraineeRouter = require('./routes/IndividualTraineeRoutes')
 const InstructorRouter = require('./routes/InstructorRoutes')
+const EnrollementRouter=require('./routes/EnrollementRoutes')
+const cors = require("cors")
 
 // express app
 const app = express()
@@ -19,6 +21,7 @@ const app = express()
 app.use(cors())
 // middleware
 app.use(express.json())
+app.use(cors())
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
@@ -32,6 +35,7 @@ app.use('/api/CorporateTrainee',CorporateTraineeRouter)
 app.use('/api/Guest',GuestRouter)
 app.use('/api/IndividualTrainee',IndividualTraineeRouter)
 app.use('/api/Instructor',InstructorRouter)
+app.use('/api/Enrollement',EnrollementRouter)
 
 // connect to db
 mongoose.connect("mongodb+srv://OmarAshraf:2912004@cluster0.padqnt9.mongodb.net/test")
