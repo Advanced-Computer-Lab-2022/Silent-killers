@@ -1,5 +1,5 @@
 # Silent-killers
-### - Before coming to the lab !!
+### - Before running the project !!
 * Make sure that you have *vs code* installed.
 * Make sure that you have *node* installed.
 * Make sure that you have *Postman* installed.
@@ -13,8 +13,8 @@ or you can just type in terminal to install all missing packages:
     npm install 
     
 # Testing
-After cloning the repo, open the source directory
-The theme of the project, is to create a complete Online Learning System. An Online Learning System is a web application through which individuals can attend pre-recorded courses online. Existing web applications include but are not limited to Coursera, Udemy,LinkedIn Learning, Great Learning and Udacity.
+After cloning the repo, open the directory
+The aim of the project, is to create a complete Online Learning System. An Online Learning System is a web application through which individuals can attend pre-recorded courses online. Existing web applications include but are not limited to Coursera, Udemy,LinkedIn Learning, Great Learning and Udacity.
 Our website is the best place to learn new courses,
 with it you can do the following:-
 Project Description and how to use it:-
@@ -58,7 +58,16 @@ Second,Run the frontend:-
 1-go to the frontend folder using command-----> cd frontend
 2-Install all needed packages using this----> npm i
 3-run the frontend by the command----> npm start
-We are a team of computer science students in the German University in Cairo,all of us did his best to finish the project
+![1](https://user-images.githubusercontent.com/115995971/210179995-fb0792a4-98c7-4409-9461-189a5ce7e60a.jpg)
+![2](https://user-images.githubusercontent.com/115995971/210180107-9e2d2fa9-ff40-43dc-b5b6-e8a05e604e23.jpg)
+![3](https://user-images.githubusercontent.com/115995971/210180115-a655ae2b-f230-467f-a952-99fcb42d846c.jpg)
+![4](https://user-images.githubusercontent.com/115995971/210180131-4d229bb9-5694-468e-a6f4-b6c4d3748d08.jpg)
+![5](https://user-images.githubusercontent.com/115995971/210180138-363ebb63-01ff-4804-acfe-d6a4fa2f655c.jpg)
+![7](https://user-images.githubusercontent.com/115995971/210180150-e6040ce8-41e0-4c01-9f5e-b9315d387a3b.jpg)
+![8](https://user-images.githubusercontent.com/115995971/210180167-37bc3cd1-75b4-4a4f-b84b-698898ed8c9c.jpg)
+
+*Credits*
+We are a team of Computer Science students at the German University in Cairo,all of us did his best to finish the project
 Team Members:-
 1-Menna Hassan(scrum master)
 2-Mariam Ashraf
