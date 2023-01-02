@@ -12,7 +12,7 @@ const navigate = useNavigate();
         
            await axios.get(`http://localhost:8000/api/Guest/logout`).then(
           )
-          navigate('/login');
+          navigate('/');
           
            ;
 
