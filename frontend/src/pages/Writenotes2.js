@@ -7,7 +7,7 @@ const Writenotes = () => {
 
   const [Notes,setNotes] = useState(null);
   const params = new URLSearchParams(window.location.search);
-const CourseId = "635ad8428dac2148efe732ea" ;
+  const CourseId = params.get('CourseId') ;
 //const StudentId = params.get('StudentId');
 
  
@@ -17,7 +17,7 @@ const CourseId = "635ad8428dac2148efe732ea" ;
         console.log("i get in here!")
         //console.log(Price)
         
-           await axios.patch(`http://localhost:8000/api/IndividualTrainee/writenotes?StudentId=${localStorage.getItem("user")}&CourseId=${localStorage.getItem("course")}`, {notes:Notes}).then(
+           await axios.patch(`http://localhost:8000/api/IndividualTrainee/writenotes?StudentId=${localStorage.getItem("user")}&CourseId=${CourseId}`, {notes:Notes}).then(
           (res) => { 
            // setresults(res.data)
             //setresults(Object.entries(res.data));

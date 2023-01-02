@@ -95,6 +95,7 @@ const ViewCoursebyIdINS = () => {
         <p><Link to="/addpreview5"> Add Preview Video </Link></p>
         <p><Link to="/addyoutubeanddes">Add youtube video link and description </Link></p>
         <p><Link to="/previewvideo">Watch this course's preview video </Link></p>
+        <button onClick={() => window.location.href=`/createpromotion`}> set discount for  the course</button>
 	
       </div>
     </div>

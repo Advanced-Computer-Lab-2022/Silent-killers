@@ -174,6 +174,10 @@ const Refund2= async (req,res)=>{
   const {payment,user,course}=req.query;
   var status="awaiting approval"
   try{
+    const wallet =await  Wallet.findOne({TraineeID : user});
+    if(!wallet){
+      const newwallet = await Wallet.create({TraineeID : user , Amount : 0});
+    }
   const refund=await Refund.create({CourseId:course,PaymentId:payment,UserId:user,Status:status})
   res.status (200).json(refund)}
   catch (error) {

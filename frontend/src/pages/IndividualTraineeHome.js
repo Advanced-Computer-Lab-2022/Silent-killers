@@ -39,10 +39,6 @@ return (
 		<li>
 		<Link to="/getwallet2">View the amount in my wallet </Link>
 		</li>
-
-	<li>
-		<Link to="/pdf"> Receive Course Cerificate via email </Link>
-		</li>
 		<li>
 		<Link to="/getbyid"> Check Courses and monitor your Progress </Link>
 		</li>

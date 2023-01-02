@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ReportIT = () => { 
   const params = new URLSearchParams(window.location.search);
-  const course = params.get('course')
+  const course = params.get('courseid')
   const coursetitle = params.get('coursetitle')
   const [problem,setproblem] = useState(null)
   

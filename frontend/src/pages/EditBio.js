@@ -33,7 +33,9 @@ const Editbio = () => {
       <table border="1" style={{ float: 'left' }}>
       </table>
       <div>
+        <p>Edit Bio</p>
       <input type="text" value= {bio} onChange={(e)=>{setBio(e.target.value)}} /> <br /><br />
+      <p>Edit email</p>
       <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}} /> <br /><br />
         
         <button onClick={setbio} >set email and biography</button>  

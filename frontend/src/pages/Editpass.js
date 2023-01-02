@@ -29,10 +29,9 @@ const Editpass = () => {
       <table border="1" style={{ float: 'left' }}>
       </table>
       <div>
-      <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} /> <br /><br />
+      <p>Enter new Password</p>
       <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} /> <br /><br />
         
-        <button onClick={changepass} >edit password</button>  
         <button onClick={changepass} >edit password</button>  
       </div>
     </div>

@@ -230,16 +230,29 @@ const editpassword = async(req, res) => {
         } =req.body;
         console.log("Req Body");
         const editpass = await Instructor.findByIdAndUpdate(req.query.id,{Password:password});
-        if(editpass._id)
+        const editpass1 = await CorporateTrainee.findByIdAndUpdate(req.query.id,{Password:password});
+        const editpass2 = await IndividualTrainee.findByIdAndUpdate(req.query.id,{Password:password});
+        if(editpass)
         {
             editpass.Password =password;
+            const pw = await editpass.save();
         }
-        const pw = await editpass.save();
+        if(editpass1)
+        {
+            editpass1.Password =password;
+            const pw = await editpass1.save();
+        }
+        if(editpass2)
+        {
+            editpass2.Password =password;
+            const pw = await editpass2.save();
+        }
+        //const pw = await editpass.save();
         res.json(pw);
     } catch(err) {
         console.log("Error");
         return res.status(500).json({msg: err.message});
-    }
+    }
 
 }
 const editBioEm = async(req, res) => {
@@ -290,9 +303,9 @@ const addDiscount=async(req,res)=>{
 
 
 const addQuestion = async(req,res) => {
-    const{ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle,TraineeSolutions} = req.body;
+    const{ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle} = req.body;
     try{
-        const question = await Exercises.create({ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle,TraineeSolutions});
+        const question = await Exercises.create({ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle});
         res.status(200).json(question)
     }catch(error){
         res.status(400).json({error:error.message})
@@ -392,7 +405,7 @@ const followup = async (req,res) =>{
         // const reports = await Reports.findOneAndUpdate({INSid:id},{Comment:comment},{new:false})
         //if()
         const reports= await Reports.findById(id)
-        if(reports.Status=="Unresolved"){
+        if(reports.Status=="Unresolved"|| reports.Status=="Pending"){
             const reports1 = await Reports.findByIdAndUpdate(id,{Comment:comment},{new:false})
             res.status (200).json(reports1)
         }

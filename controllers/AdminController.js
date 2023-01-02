@@ -114,7 +114,8 @@ const Adminrefund = async(req,res)=>{
         const payinfo =await Payment.findOneAndUpdate({UserId:refund.UserId,CourseId:refund.CourseId},{Status:"refunded"})
         console.log(payinfo)
         console.log(refund.UserId)
-        const wallet = await Wallet.findOneAndUpdate({TraineeID:refund.UserId},{Amount:payinfo.CoursePrice})
+        const wallet1 = await Wallet.findOne({TraineeID : payinfo.UserId});
+        const wallet = await Wallet.findOneAndUpdate({TraineeID:refund.UserId},{Amount:(payinfo.CoursePrice + wallet1.Amount)})
         console.log(wallet)
         return res.status(200).json(wallet)
     }

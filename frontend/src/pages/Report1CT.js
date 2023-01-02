@@ -91,7 +91,7 @@ console.log(localStorage.getItem("user"));
                 }
             }}
             
-            onClick={() => window.location.href=`/ReportCT/?course=${author._id}&coursetitle=${author.Title}`}
+            onClick={() => window.location.href=`/ReportCT/?courseid=${author._id}&coursetitle=${author.Title}`}
               key={author._id}
               
 

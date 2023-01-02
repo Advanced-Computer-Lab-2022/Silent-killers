@@ -1,29 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const ReportINS = () => { 
-
-  const [problem,setproblem] = useState(null)
-  const [course,setcourse] = useState(null)
+const ReportCT = () => { 
   const params = new URLSearchParams(window.location.search);
-  //const userId = params.get('id');
+  const course = params.get('courseid')
+  const coursetitle = params.get('coursetitle')
+  const [problem,setproblem] = useState(null)
   
-  const userId = "63583aeb96f0aefb12992977"
-  console.log(userId);
- 
-  
-      
-
-    
       const ttt =  async () => {
         console.log("i get in here!")
-        await axios.post(`http://localhost:8000/api/Instructor/reportINS/?id=${userId}`,{problem:problem,course:course}).then(
-          (res) => {          
-          console.log(res.data)  
-        
+        await axios.post(`http://localhost:8000/api/Instructor/reportINS/?course=${course}&coursetitle=${coursetitle}&id=${localStorage.getItem("user")}`,{problem:problem}).then(
+          (res) => {
+          console.log(res.data)
+
         }
            );
-         
+
     }
 
     const t1 =  async () => {
@@ -33,10 +25,10 @@ const ReportINS = () => {
         setproblem("financial")
     }
 
-    
+
   return (
     <div className="App">
-      
+
       <table border="1" style={{ float: 'left' }}>
       </table>
       <div>
@@ -45,18 +37,15 @@ const ReportINS = () => {
       <p></p>
       <button onClick={t2} >Financial</button>
       <p></p>
-      <label> Other :</label>
+      <label> Other </label>
       <input type="problem" value={problem} onChange={(e)=>{setproblem(e.target.value)}} /> <br /><br />
-
-        <label>Course </label>
-      <input type="Course" value={course} onChange={(e)=>{setcourse(e.target.value)}} /> <br /><br />
       </div>
-     <button onClick={ttt} >Submit Report</button>  
+     <button onClick={ttt} >Submit Report</button>
 
-     
-    
+
+
     </div>
-    
+
   );
 }
-  export default ReportINS;
+  export default ReportCT;

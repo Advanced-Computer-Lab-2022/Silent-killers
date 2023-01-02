@@ -64,9 +64,6 @@ return (
         <li>
 		<Link to="/forgotpass">edit your password</Link>
 		</li>
-        <li>
-		<Link to="/createpromotion">set discount for  the course </Link>
-		</li>
 		<li>
 		<Link to="/editbiography">Edit email and biography </Link>
 		</li>

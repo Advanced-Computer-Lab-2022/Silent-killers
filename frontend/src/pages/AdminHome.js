@@ -28,6 +28,10 @@ return (
         <li>
 		<Link to="/viewallcourses">view all course to view and grant access requests and set promotions </Link>
 		</li>
+		<li>
+		<Link to="/logout">Log Out </Link>
+		</li>
+
 	</ul>
 	</div>
 );

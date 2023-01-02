@@ -49,7 +49,7 @@ const ExercisesSchema = new mongoose.Schema({
         [
             {
               type: String,
-              required: true,
+              required: false,
             },
           ],
     

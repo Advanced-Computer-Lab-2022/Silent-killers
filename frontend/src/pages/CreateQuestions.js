@@ -11,7 +11,6 @@ const Createquestions = () => {
   const [Questions,setQuestions] = useState([]);
   const [CorrectSolutions,setCorrectSolutions] = useState([]);
   const [CourseTitle,setCourseTitle] = useState([]);
-  const [TraineeSolutions,setTraineeSolutions] = useState([]);
 
  
       
@@ -19,7 +18,7 @@ const Createquestions = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const course = {ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle,TraineeSolutions}
+    const course = {ExerciseNumber,TraineeUsername,Questions,CorrectSolutions,CourseTitle}
     //??
     const response = await fetch('/api/Instructor/addquestion', {
       method: 'POST',
@@ -40,7 +39,6 @@ const Createquestions = () => {
       setQuestions('')
       setCorrectSolutions('')
       setCourseTitle('')
-      setTraineeSolutions('')
       console.log('new Course added:', json)
     }
 
@@ -65,7 +63,6 @@ const Createquestions = () => {
       />
 
      <label> Questions</label>
-     <label> Questions</label>
       <input 
         type="text" 
         onChange={(e) => setQuestions(e.target.value)} 
@@ -87,13 +84,6 @@ const Createquestions = () => {
         type="text" 
         onChange={(e) => setCourseTitle(e.target.value)} 
         value={CourseTitle}
-      />
-
-      <label>Trainee Solutions:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setTraineeSolutions(e.target.value)} 
-        value={TraineeSolutions} 
       />
       
 
