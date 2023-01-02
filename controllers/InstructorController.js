@@ -95,10 +95,11 @@ const instructerViewCourseByTitle = async (req,res) =>{
     }}
 
     const addCourse = async(req,res) => {
-   
-        const{Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle} = req.body;
+        const id = req.query.id;
+        const{Title,TotalHoursOfCourse,Subtitles,Subject,Summary,Price,TotalHoursOfEachSubtitle} = req.body;
+        
         try{
-            const course = await Course.create({Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle});
+            const course = await Course.create({Title:Title,INSid:id,TotalHoursOfCourse:TotalHoursOfCourse,Subtitles:Subtitles,Subject:Subject,Summary:Summary,Price:Price,TotalHoursOfEachSubtitle:TotalHoursOfEachSubtitle});
             res.status(200).json(course)
         }catch(error){
             res.status(400).json({error:error.message})

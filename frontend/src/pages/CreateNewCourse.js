@@ -1,51 +1,26 @@
-import { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 const CreateNewCourse = () => {
   const [Title, setTitle] = useState('')
-  const [InstructorID, setInstructorID] = useState(null)
   const [TotalHoursOfCourse, setTotalHoursOfCourse] = useState(null)
   const [Subtitles, setSubtitles] = useState('')
   const [Subject, setSubject] = useState('')
   const [Price, setPrice] = useState('')
   const [Summary, setSummary] = useState('')
-  const [Exercises, setExercises] = useState(null)
+  //const [Exercises, setExercises] = useState(null)
   const [TotalHoursOfEachSubtitle, setTotalHoursOfEachSubtitle] = useState(null)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const course = {Title,InstructorID,TotalHoursOfCourse,Subtitles,Subject,Summary,Exercises,Price,TotalHoursOfEachSubtitle}
-    //??
-    const response = await fetch('/api/Instructor/addcourses', {
-      method: 'POST',
-      body: JSON.stringify(course),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const json = await response.json()
-
-    // if (!response.ok) {
-    //   setError(json.error)
-    // }
-    if (response.ok) {
-    //   setError(null)
-      setTitle('')
-      setSubtitles('')
-      setPrice('')
-      setSummary('')
-      setInstructorID(null)
-      setTotalHoursOfCourse(null)
-      setSubject('')
-      setExercises(null)
-      setTotalHoursOfEachSubtitle(null)
-      console.log('new Course added:', json)
-    }
-
-  }
-
+        const tt =  async () => {
+          console.log(localStorage.getItem("user"))
+             await axios.post(`http://localhost:8000/api/Instructor/addcourses?id=${localStorage.getItem("user")}`,{Title:Title,TotalHoursOfCourse:TotalHoursOfCourse,Subtitles:Subtitles,Subject:Subject,Summary:Summary,Price:Price,TotalHoursOfEachSubtitle:TotalHoursOfEachSubtitle}).then(
+            (res) => { 
+              console.log(res.data)
+                
+            }
+             );}
+  
   return (
-    <form className="create" onSubmit={handleSubmit}> 
+    <form > 
       <h3>create a New Course</h3>
 
       <label>Course Name:</label>
@@ -55,12 +30,12 @@ const CreateNewCourse = () => {
         value={Title}
       />
 
-     <label>Instructor ID:</label>
+     {/* <label>Instructor ID:</label>
       <input 
         type="number" 
         onChange={(e) => setInstructorID(e.target.value)} 
         value={InstructorID}
-      />
+      /> */}
 
      <label> Total Hours Of the Course:</label>
       <input 
@@ -91,13 +66,13 @@ const CreateNewCourse = () => {
         onChange={(e) => setPrice(e.target.value)} 
         value={Price} 
       />
-      <label> Total number of Exercises:</label>
+      {/* <label> Total number of Exercises:</label>
       
       <input 
         type="number" 
         onChange={(e) => setExercises(e.target.value)} 
         value={Exercises}
-      />
+      /> */}
 
     <label> Total number of hours for each Subtitle:</label>
       
@@ -114,7 +89,7 @@ const CreateNewCourse = () => {
         value={Summary}
       />
 
-      <button>Add Course</button>
+      <button onClick={tt}>Add Course</button>
     </form>
   )
 }
