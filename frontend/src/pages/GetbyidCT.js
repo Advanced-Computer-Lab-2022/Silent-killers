@@ -55,6 +55,7 @@ const GetbyidCT = () => {
          <p>Student id:{e.StudentId}</p>
           <p>lesson id:{e.LessonId}</p>
           <p>Completed:{e.Completed}</p>
+          {e.Completed>=100 ? (<Link to="/downloadpdf">Download Certificate as a pdf</Link>):("")}
           <p><Link to="/writenotes2">Write Notes</Link></p>
           <p><Link to="/watchvideo">Watch video</Link></p>
           <p><Link to="/vieweachdetailcourse">Open all course items</Link></p>

@@ -162,7 +162,6 @@ const searchforcoursebysubjecttitleinstructor = async (req, res) => {
         }else{
             if(title){
                 const course = await Course.find({Title:title})
-                alert(title);
                 return res.status(200).json(course)
             }
             else{

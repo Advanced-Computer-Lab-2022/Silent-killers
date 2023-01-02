@@ -345,6 +345,10 @@ function App() {
               element={<TraineeRequestAccess />} 
             />
 <Route 
+              path="/requestaccess2"
+              element={<TraineeRequestAccess2 />} 
+            />
+<Route 
               path="/admingrantaccess"
               element={<AdminGrantAccess />} 
             />
@@ -533,7 +537,7 @@ function App() {
               path="/insfilter"
               element={<Instructorfilter />} />
                  <Route 
-              path="/downloadcertificate"
+              path="/downloadpdf"
               element={<DownloadCertificate />} />
               <Route 
               path="/ViewAllAvRefunds"

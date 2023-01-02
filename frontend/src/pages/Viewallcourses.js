@@ -84,7 +84,7 @@ const Viewallcourses = () => {
                 }
             }}
             
-            onClick={() => window.location.href=`/viewcoursebyid?id=${author._id}`}
+            onClick={() => window.location.href=`/viewcoursebyidredirect?id=${author._id}`}
               key={author._id}
               
 

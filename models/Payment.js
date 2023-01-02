@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
-const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
+
+
 
 const PaymentSchema = new mongoose.Schema({
     CourseId:{

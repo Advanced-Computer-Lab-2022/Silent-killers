@@ -53,7 +53,7 @@ return (
 		<Link to="/addquestion">Create an exam</Link>
 		</li>
 		<li>
-		<Link to="/setanswer2">Set answers for exercises</Link>
+		<Link to="/viewexercises">View and set answers for exercises</Link>
 		</li>
 		<li>
 		<Link to="/insrating2">View your Ratings and Reviews</Link>
@@ -68,7 +68,7 @@ return (
 		<Link to="/createpromotion">set discount for  the course </Link>
 		</li>
 		<li>
-		<Link to="/editbiography">set discount for  the course </Link>
+		<Link to="/editbiography">Edit email and biography </Link>
 		</li>
 		<li>
 		<Link to="/report1ins">View and report courses </Link>

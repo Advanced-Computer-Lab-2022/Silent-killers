@@ -25,7 +25,7 @@ const ViewCoursebyIdCT = () => {
 //   const [email,setEmail] = useState(null);
  
       
-    localStorage.setItem("course" , id);
+
     console.log(localStorage.getItem("course"));
       const setbio =  async () => {
         console.log("i get in here!")

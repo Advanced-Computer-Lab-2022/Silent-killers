@@ -55,7 +55,7 @@ const UsersList = () => {
             onClick={getAuthors}
             margin="normal"
             padding="normal"
-            >Search for a Course</Button>
+            >Filter Courses</Button>
             {/* margin */}
             </Box>
             <label>Rating : </label>

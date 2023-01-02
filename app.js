@@ -13,7 +13,6 @@ const GuestRouter = require('./routes/GuestRoutes')
 const IndividualTraineeRouter = require('./routes/IndividualTraineeRoutes')
 const InstructorRouter = require('./routes/InstructorRoutes')
 const EnrollementRouter=require('./routes/EnrollementRoutes')
-const cors = require("cors")
 
 // express app
 const app = express()

@@ -56,6 +56,7 @@ const Getbyid = () => {
           <p>lesson id:{e.LessonId}</p>
           <p>Completed:{e.Completed}</p>
           {e.Completed< 50 ? (<Link to="/getpayment">View Payments to request a refund</Link>):("")}
+          {e.Completed>=100 ? (<Link to="/downloadpdf">Download Certificate as a pdf</Link>):("")}
           <p><Link to="/writenotes2">Write Notes</Link></p>
           <p><Link to="/watchvideo">Watch video</Link></p>
           <p><Link to="/vieweachdetailcourse">Open all course items</Link></p>
