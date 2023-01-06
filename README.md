@@ -964,7 +964,33 @@ Frontend:when he gets the courses he’s enrolled in after signing in, the enrol
 31-Instructor uploads a video link from YouTube as a preview video for his course 
 Postman(patch):types the link of the video as req.body
 Frontend:after logging in and searching for a specific course given by him, he types the link as a text input and click on upload button
-
+32-Users view all the titles of the courses available including the total hours of the course and course rating
+Postman(get):nothing is written in the body or the params 
+Frontend:pressing a button that lists all the courses in a table, clicking on any course will redirect the user to a page where he can see all the details
+33-The individual trainee reports a problem with a course. The problem can be "technical", "financial" or "other" 
+Postman(post):takes problem in req.body and course title and course id and id of individual trainee in req.query
+Frontend:search for courses he/she enrolled in and presses report and writes the problem
+34-Admin add corporate trainees and create their usernames and passwords
+Postman(post): writes the username and the password as req.body 
+Frontend: he chooses the corporate trainee to create then write their usernames and password as text inputs
+35-Admin add another admin and create their usernames and passwords
+Postman(post): writes the username and the password as req.body 
+Frontend: he chooses the admin to create then write their usernames and password as text inputs
+36-Admin add instructor and create their usernames and passwords
+Postman(post): writes the username and the password as req.body 
+Frontend: he chooses the instructor to create then write their usernames and password as text inputs
+37-Individual trainee views his/her grade from the exercise after completing it 
+Postman(get):enters his id and the id of the exercise as req.query 
+Frontend: after clicking on submit answers he’s redirected to a page where he can click on view grades
+38-Instructor views reviews on his courses 
+Postman(get):enters his id and the id of the course as req.query 
+Frontend:when logged in, his id is saved and he searches for his courses and clicks on a specific course and gets the reviews from a button
+39-Individual trainee views the status of the reported problems 
+Postman(get):view either pending or resolved
+Frontend:presses a button that shows either pending or resolved
+40-Admin search for refund
+Postman(post):enters status, his id and the course id as req.body
+Frontend:click on button to view all reported refunds
 ## How to Use
 As mentioned before we would run the backend and frontend as discussed and open the browser to http://localhost:3000/ which brings you to the guest home page from which you can then navigate through the project going to the seperate pages and testing or using all the implemented functionalities such as logging in,signing up ,filtering or searching through courses and more.
 ## Contribute
